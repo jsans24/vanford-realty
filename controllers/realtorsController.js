@@ -11,4 +11,8 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/new', (req, res) => {
+  res.render('realtors/new')
+});
+
 module.exports = router;
