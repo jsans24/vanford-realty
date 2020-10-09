@@ -1,0 +1,23 @@
+const mongoose = require('mongoose');
+
+const realtorSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  phone: Number,
+  email: String,
+  bio: {
+    type: String,
+    minlength: 20,
+  },
+  address: String,
+  homes: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Article',
+  }],
+});
+
+const Realtor = mongoose.model('Realtor', realtorSchema);
+
+module.exports = Realtor;
