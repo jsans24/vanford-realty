@@ -1,4 +1,4 @@
-# vanford_realty
+# Vanford Realty
 ## Who is Vanford Realty?
 Vanford Realty is a premier real estate firm located in a major metropolitan area, that serves multiple areas within the region. Vanford realty provides a web application that shows a listing of homes and associated realtors and cities served. 
 User Story
