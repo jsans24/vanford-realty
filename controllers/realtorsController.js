@@ -23,4 +23,14 @@ router.post('/', (req, res) => {
   });
 });
 
+router.get('/:realtorName', (req, res) => {
+  db.Realtor.find({name: req.params.realtorName})
+    .populate('houses')
+    .exec((err, foundRealtor) => {
+      if (err) console.log(err);
+
+      res.render('realtors/show', {foundRealtor});
+    });
+});
+
 module.exports = router;
