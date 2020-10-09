@@ -15,4 +15,12 @@ router.get('/new', (req, res) => {
   res.render('realtors/new')
 });
 
+router.post('/', (req, res) => {
+  db.Realtor.create(req.body, (err, newRealtor) => {
+    if (err) console.log(err);
+
+    res.redirect('/realtors');
+  });
+});
+
 module.exports = router;
