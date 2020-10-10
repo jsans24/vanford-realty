@@ -14,7 +14,10 @@ router.get('/', (req, res) => {
 
 //create route - get
 router.get('/new', (req, res) => {
-    res.render('houses/new');
+    db.Realtor.find({}, (err, realtors) => {
+        if(err) return console.log(err);
+    })
+    res.render('houses/new', {realtors, realtors});
 });
 
 
