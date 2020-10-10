@@ -35,7 +35,12 @@ router.get('/:realtorId', (req, res) => {
     });
 });
 
+router.get('/:realtorId/edit', (req, res) => {
+  db.Realtor.findById(req.params.realtorId, (err, foundRealtor) => {
+    if (err) console.log(err);
 
-
+    res.render('realtors/edit', {foundRealtor});
+  });
+});
 
 module.exports = router;
