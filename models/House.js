@@ -15,6 +15,10 @@ const houseSchema = new mongoose.Schema({
     bedrooms: Number,
     bathrooms: Number,
     size: Number,
+    realtor: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Realtor'
+    },
     img: {
         data: Buffer, 
         contentType: String
