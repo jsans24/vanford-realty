@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
-const houseSchema = new.mongoose.Schema({
+const houseSchema = new mongoose.Schema({
     address: {
+        type: String,
+        required: true
+    },
+    city: {
         type: String,
         required: true
     },
@@ -11,7 +15,10 @@ const houseSchema = new.mongoose.Schema({
     bedrooms: Number,
     bathrooms: Number,
     size: Number,
-    type: String
+    img: {
+        data: Buffer, 
+        contentType: String
+    }
 });
 
 const House = mongoose.model('House', houseSchema);
