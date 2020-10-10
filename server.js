@@ -6,7 +6,11 @@ const methodOverride = require('method-override');
 const app = express();
 require('dotenv').config();
 
-const PORT = process.env.PORT;
+const db = require('./models');
+const realtors = require('./test/realtorTestList')
+
+
+const PORT = 4000;
 
 app.set('view engine', 'ejs');
 
@@ -33,6 +37,14 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({storage: storage});
+
+// db.Realtor.collection.insertMany(realtors, (err, realtorData) => {
+//     if (err) {
+//         console.log(err)
+//     } else {
+//         console.log(realtorData)
+//     }
+// })
 
 // ----- ROUTES ----- //  
 app.get('/', (req, res) => res.render('index'));

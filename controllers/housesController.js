@@ -16,8 +16,8 @@ router.get('/', (req, res) => {
 router.get('/new', (req, res) => {
     db.Realtor.find({}, (err, realtors) => {
         if(err) return console.log(err);
+        res.render('houses/new', {realtors, realtors});
     })
-    res.render('houses/new', {realtors, realtors});
 });
 
 
