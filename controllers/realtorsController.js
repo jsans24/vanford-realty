@@ -29,8 +29,12 @@ router.get('/:realtorName', (req, res) => {
     .exec((err, foundRealtor) => {
       if (err) console.log(err);
 
-      res.render('realtors/show', {foundRealtor});
+      console.log(foundRealtor);
+
+      res.render('realtors/show', {realtor: foundRealtor});
     });
 });
+
+
 
 module.exports = router;
