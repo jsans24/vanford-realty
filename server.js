@@ -38,7 +38,7 @@ const upload = multer({storage: storage});
 app.get('/', (req, res) => res.render('index'));
 
 // app.use('/realtors', ctrl.realtors);
-app.use('/houses', ctrl.houses);
+app.use('/listings', ctrl.houses);
 
 app.use('*', (req, res) => res.render('404'));
 

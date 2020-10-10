@@ -7,21 +7,21 @@ const db = require('../models');
 //index route
 router.get('/', (req, res) => {
     db.House.find({}, (err, houseListings) => {
-        if(err) return console.log(err)
+        if(err) return console.log(err);
         res.render('houses/index', {listings: houseListings})
-    })
-})
+    });
+});
 
 //create route - get
 router.get('/new', (req, res) => {
-    res.render('houses/new')
+    res.render('houses/new');
 });
 
 
 //show route
 router.get('/:id', (req, res) => {
     db.House.findById(req.params.id, (err, listing) =>{
-        if(err) console.log(err)
+        if(err) return console.log(err);
         res.render('houses/show', {listing, listing})
     });
 });
@@ -44,19 +44,58 @@ router.post('/', (req, res) => {
     };
     db.House.create(obj, (err, newListing) => {
         if(err) return console.log(err);
-        res.redirect('/listings')
+
+        db.Realtor.findById(req.body.realtor, (err, realtor) => {
+            if(err) return console.log(err);
+
+            realtor.houses.push(newListing._id);
+            realtor.save((err, houseListings) => {
+                if(err) return console.log(err);
+                res.redirect('/listings');
+            });
+        });
     });
 });
 
 //delete route
+router.delete('/:id', (err, listingToEdit) => {
+    const listingId = req.params.id;
+    
+    db.House.findByIdAndDelete(listingId, (err, listingToDelete) => {
+        if(err) return console.log(err);
 
+        db.Realtor.findOne({'houses': listingId}, (err, realtor) => {
+            if(err) return console.log(err);
+
+            realtor.houses.remove(listingId);
+            realtor.save((err) => {
+                if(err) return console.log(err);
+                res.redirect('/listings');
+            });
+        });
+    });
+});
 
 
 //edit page - get
 router.get('/:id/edit', (req, res) => {
-    
-})
+    db.House.findById(req.params.id, (err, listingforEdit) =>{
+        if(err) return console.log(err);
+        res.render('houses/edit', {listing: listingForEdit})
+    });
+});
 
 //put route
+router.put('/:id', (req, res) => {
+    db.House.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {new: true},
+        (err, editedListing) => {
+            if(err) return console.log(err);
+            res.redirect(`/listings/${editedListing._id}`)
+        });
+});
+
 
 module.exports = router;
