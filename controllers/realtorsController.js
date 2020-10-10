@@ -23,8 +23,8 @@ router.post('/', (req, res) => {
   });
 });
 
-router.get('/:realtorName', (req, res) => {
-  db.Realtor.find({name: req.params.realtorName})
+router.get('/:realtorId', (req, res) => {
+  db.Realtor.find(req.params.realtorId)
     .populate('houses')
     .exec((err, foundRealtor) => {
       if (err) console.log(err);
@@ -34,6 +34,7 @@ router.get('/:realtorName', (req, res) => {
       res.render('realtors/show', {realtor: foundRealtor});
     });
 });
+
 
 
 
