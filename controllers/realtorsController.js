@@ -43,4 +43,16 @@ router.get('/:realtorId/edit', (req, res) => {
   });
 });
 
+router.put('/:realtorId', (req, res) => {
+  db.Realtor.findByIdAndUpdate(
+    req.params.realtorId,
+    req.body,
+    {new: true},
+    (err, updatedRealtor) => {
+    if (err) console.log(err);
+
+    res.redirect(`/realtors/${updatedRealtor._id}`);
+  });
+});
+
 module.exports = router;
