@@ -55,4 +55,12 @@ router.put('/:realtorId', (req, res) => {
   });
 });
 
+router.delete('/:realtorId', (req, res) => {
+  db.Realtor.findByIdAndDelete(req.params.realtorId, (err, deletedRealtor) => {
+    if (err) console.log(err);
+
+    res.redirect('/realtors');
+  });
+});
+
 module.exports = router;
