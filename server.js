@@ -9,7 +9,6 @@ require('dotenv').config();
 const PORT = 4000;
 
 const db = require('./models');
-const data = require('./test/realtorTestList')
 
 app.set('view engine', 'ejs');
 
@@ -43,15 +42,6 @@ app.post('/register', (req, res) => {
 // app.post('/login', (req, res) => {
     
 // });
-
-// db.Realtor.collection.insertMany(data, (err, realtors) => {
-//     if (err) {
-//         console.log(err)
-//     } else {
-//         console.log(realtors)
-//     }
-//     process.exit();
-// })
 
 // app.use('/realtors', ctrl.realtors);
 app.use('/houses', ctrl.houses);

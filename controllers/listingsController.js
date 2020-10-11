@@ -35,15 +35,6 @@ router.get('/new', (req, res) => {
     })
 });
 
-// //show route - 
-// router.get('/:id', (req, res) => {
-//     db.House.findById(req.params.id, (err, listing) =>{
-//         if(err) return console.log(err);
-//         res.render('listings/show', {listing, listing})
-//     });
-// });
-
-
 //post route - Complete
 router.post('/', (req, res) => {
     upload(req, res, (err) => {
@@ -77,7 +68,7 @@ router.post('/', (req, res) => {
 });
 
 
-//delete route
+//delete route - Complete
 router.delete('/:id', (req, res) => {
     const listingId = req.params.id;
     

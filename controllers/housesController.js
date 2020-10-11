@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
     });
 });
 
-//show route - 
+//show route - Complete
 router.get('/:id', (req, res) => {
     db.House.findById(req.params.id, (err, listing) =>{
         if(err) return console.log(err);

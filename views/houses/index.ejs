@@ -10,7 +10,7 @@
     <% listings.forEach(listing => { %>
         <img class="house-listing" src="/uploads/<%= listing.img %>" alt="house-id#-<%=listing._id%>">
         <ul class="house-listing">
-            <li><a href="/listings/<%=listing._id%>"><%= listing.address %></a></li>
+            <li><a href="/houses/<%=listing._id%>"><%= listing.address %></a></li>
             <li><%= listing.city %></li>
             <li><%= listing.price %> </li>
         </ul>
