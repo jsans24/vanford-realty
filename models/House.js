@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 const houseSchema = new mongoose.Schema({
     address: {
         type: String,
-        required: true
+        required: true,
     },
     city: {
         type: String,
-        required: true
+        required: true,
     },
     price: {
         type: Number,
-        required: true
+        required: true,
     },
     bedrooms: Number,
     bathrooms: Number,
@@ -19,10 +19,7 @@ const houseSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Realtor'
     },
-    img: {
-        data: Buffer, 
-        contentType: String
-    }
+    img: String
 });
 
 const House = mongoose.model('House', houseSchema);

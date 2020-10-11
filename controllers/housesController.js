@@ -3,6 +3,19 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+const multer = require('multer');
+
+//multer middleware
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './public/uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '_' + Date.now() + '_' + file.originalname)
+    }
+});
+
+const upload = multer({storage: storage}).single('img');
 
 //index route
 router.get('/', (req, res) => {
@@ -32,32 +45,34 @@ router.get('/:id', (req, res) => {
 
 //post route
 router.post('/', (req, res) => {
-    let obj = {
-        address: req.body.name,
-        city: req.body.city,
-        price: req.body.price,
-        bedrooms: req.body.bedrooms,
-        bathrooms: req.body.bathrooms,
-        size: req.body.size,
-        type: req.body.type,
-        img: { 
-            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)), 
-            contentType: req.body.file
-        }
-    };
-    db.House.create(obj, (err, newListing) => {
-        if(err) return console.log(err);
+    upload(req, res, (err) => {
+        if(err) return console.log(err)
 
-        db.Realtor.findById(req.body.realtor, (err, realtor) => {
+        const obj = {
+            address: req.body.address,
+            city: req.body.city,
+            price: req.body.price,
+            bedrooms: req.body.bedrooms,
+            bathrooms: req.body.bathrooms,
+            size: req.body.size,
+            type: req.body.type,
+            img: req.file.filename
+            };
+
+        db.House.create(obj, (err, newListing) => {
             if(err) return console.log(err);
-
-            realtor.houses.push(newListing._id);
-            realtor.save((err, houseListings) => {
+    
+            db.Realtor.findById(req.body.realtor, (err, realtor) => {
                 if(err) return console.log(err);
-                res.redirect('/listings');
+    
+                realtor.houses.push(newListing._id);
+                realtor.save((err, houseListings) => {
+                    if(err) return console.log(err);
+                    res.redirect('/listings');
+                });
             });
         });
-    });
+    })
 });
 
 //delete route
