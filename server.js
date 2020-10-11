@@ -25,9 +25,10 @@ app.use(methodOverride('_method'));
 
 // ----- ROUTES ----- //  
 app.get('/', (req, res) => res.render('index'));
+app.get('/edit', (req, res) => res.render('edit'));
 
 // app.use('/realtors', ctrl.realtors);
-app.use('/listings', ctrl.houses);
+app.use('/houses', ctrl.houses);
 
 app.use('*', (req, res) => res.render('404'));
 

@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <%- include("../partials/header.ejs") %>
 </head>
 <body>
-    <h1> <%=house.address%> </h1>
-    <h3> <%=house.city %></h3>
+    <%- include('../partials/nav.ejs') %>
 
-    <h4> <%=house.price</h4>
+    <h1> <%=listing.address%> </h1>
+    <h3> <%=listing.city %></h3>
 
-    <img src="">
+    <h4> <%=listing.price</h4>
+
+    <img class="house-listing" src="<%= listing.img %>" alt="house-id#-<%=listing._id%>">
 
     <ul>
-        <li>Dwelling Type: <%=house.type%> </li>
-        <li>Size: <%=house.size%> </li>
-        <li>Bedrooms: <%=house.bedrooms%> </li>
-        <li>Bathrooms: <%house.bathrooms%> </li>
+        <li>Size: <%=listing.size%> </li>
+        <li>Bedrooms: <%=listing.bedrooms%> </li>
+        <li>Bathrooms: <%listing.bathrooms%> </li>
     </ul>
 </body>
 </html>

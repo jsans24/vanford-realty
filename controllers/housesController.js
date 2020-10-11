@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage}).single('img');
 
-//index route
+//index route - Complete
 router.get('/', (req, res) => {
     db.House.find({}, (err, houseListings) => {
         if(err) return console.log(err);
@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
     });
 });
 
-//create route - get
+//create route - get - Complete
 router.get('/new', (req, res) => {
     db.Realtor.find({}, (err, realtors) => {
         if(err) return console.log(err);
@@ -34,7 +34,7 @@ router.get('/new', (req, res) => {
 });
 
 
-//show route
+//show route - 
 router.get('/:id', (req, res) => {
     db.House.findById(req.params.id, (err, listing) =>{
         if(err) return console.log(err);
@@ -43,7 +43,7 @@ router.get('/:id', (req, res) => {
 });
 
 
-//post route
+//post route - Complete
 router.post('/', (req, res) => {
     upload(req, res, (err) => {
         if(err) return console.log(err)
@@ -68,7 +68,7 @@ router.post('/', (req, res) => {
                 realtor.houses.push(newListing._id);
                 realtor.save((err, houseListings) => {
                     if(err) return console.log(err);
-                    res.redirect('/listings');
+                    res.redirect('/houses');
                 });
             });
         });
@@ -88,7 +88,7 @@ router.delete('/:id', (err, listingToEdit) => {
             realtor.houses.remove(listingId);
             realtor.save((err) => {
                 if(err) return console.log(err);
-                res.redirect('/listings');
+                res.redirect('/houses');
             });
         });
     });
@@ -97,7 +97,7 @@ router.delete('/:id', (err, listingToEdit) => {
 
 //edit page - get
 router.get('/:id/edit', (req, res) => {
-    db.House.findById(req.params.id, (err, listingforEdit) =>{
+    db.House.findById(req.params.id, (err, listingForEdit) =>{
         if(err) return console.log(err);
         res.render('houses/edit', {listing: listingForEdit})
     });
@@ -111,7 +111,7 @@ router.put('/:id', (req, res) => {
         {new: true},
         (err, editedListing) => {
             if(err) return console.log(err);
-            res.redirect(`/listings/${editedListing._id}`)
+            res.redirect(`/houses/${editedListing._id}`)
         });
 });
 
