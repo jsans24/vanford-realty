@@ -7,13 +7,18 @@
     <%- include('../partials/nav.ejs') %>
 
     <h1>Houses for Sale</h1>
-    <% listings.forEach(listing => { %>
-        <img class="house-listing" src="/uploads/<%= listing.img %>" alt="house-id#-<%=listing._id%>">
-        <ul class="house-listing">
-            <li><a href="/houses/<%=listing._id%>"><%= listing.address %></a></li>
-            <li><%= listing.city %></li>
-            <li><%= listing.price %> </li>
-        </ul>
-    <% }) %>
+        <div class='house-display'>
+            <% listings.forEach(listing => { %>
+                <img class='house-listing' src='/uploads/<%= listing.img %>' alt='house-id#-<%=listing._id%>'>
+        
+                    <ul class='house-description'>
+                        <li><a href='/houses/<%=listing._id%>'><%= listing.address %></a></li>
+                        <li><%= listing.city %></li>
+                        <% const price = (listing.price) %>
+                        <li><%= '$' + price.toFixed(0) %> </li>
+                    </ul>
+                
+            <% }) %>
+        </div>
 </body>
 </html>

@@ -16,7 +16,8 @@
         <ul class="house-listing">
             <li><%= listing.address %></li>
             <li><%= listing.city %></li>
-            <li><%= listing.price %> </li>
+            <% const price = (listing.price) %>
+            <li><%= '$' + price.toFixed(0) %> </li>
         </ul>
 
         <form action='/listings/<%= listing._id %>?_method=DELETE' method='POST'>
