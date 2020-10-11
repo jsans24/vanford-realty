@@ -4,6 +4,14 @@ const realtorSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
     houses: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'House'
@@ -13,4 +21,3 @@ const realtorSchema = new mongoose.Schema({
 const Realtor = mongoose.model('Realtor', realtorSchema);
 
 module.exports = Realtor;
-  

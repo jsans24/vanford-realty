@@ -8,7 +8,7 @@
 
     <h1>Houses for Sale</h1>
     <% listings.forEach(listing => { %>
-        <img class="house-listing" src="<%= listing.img %>" alt="house-id#-<%=listing._id%>">
+        <img class="house-listing" src="/uploads/<%= listing.img %>" alt="house-id#-<%=listing._id%>">
         <ul class="house-listing">
             <li><a href="/listings/<%=listing._id%>"><%= listing.address %></a></li>
             <li><%= listing.city %></li>

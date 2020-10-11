@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/header.ejs") %>
+</head>
+<body>
+    <%- include('../partials/nav.ejs') %>
+
+    <h1>Welcome!</h1>
+    <h3>What Would You Like to Do?</h3>
+    <div class="new-listing">
+        <button><a href='/listings/new'>Add a New Listing</a></button>
+    </div>
+    
+    <% listings.forEach(listing => { %>
+        <ul class="house-listing">
+            <li><%= listing.address %></li>
+            <li><%= listing.city %></li>
+            <li><%= listing.price %> </li>
+        </ul>
+
+        <form action='/houses/<%= listing._id %>?_method=DELETE' method='POST'>
+            <input type='submit' value='Remove Listing'>
+        </form>
+        <form action='/houses/<%= listing._id %>edit' method='POST'>
+            <input type='submit' value='Edit Listing'>
+        </form>
+    <% }) %>
+    <div>
+        <button><a href='/'>Logout</a></button>
+    </div>
+</body>
+</html>
