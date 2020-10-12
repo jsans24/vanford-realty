@@ -87,7 +87,7 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-//edit page - get
+//edit page - get - Complete
 router.get('/:id/edit', (req, res) => {
     db.House.findById(req.params.id, (err, listingForEdit) =>{
         if(err) return console.log(err);
@@ -95,7 +95,7 @@ router.get('/:id/edit', (req, res) => {
     });
 });
 
-//put route
+//put route - Complete
 router.put('/:id', (req, res) => {
     db.House.findByIdAndUpdate(
         req.params.id,
