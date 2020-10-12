@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const realtorSchema = new mongoose.Schema({
   name: {
-    type: String,
-    required: true,
+  type: String,
+  required: true,
   },
   phone: Number,
   email: String,
@@ -12,7 +12,7 @@ const realtorSchema = new mongoose.Schema({
     minlength: 20,
   },
   address: String,
-  homes: [{
+  houses: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Article',
   }],
