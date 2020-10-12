@@ -24,9 +24,7 @@ router.post('/', (req, res) => {
 });
 
 router.get('/:realtorId', (req, res) => {
-  db.Realtor.find(req.params.realtorId)
-    .populate('houses')
-    .exec((err, foundRealtor) => {
+  db.Realtor.findById(req.params.realtorId, (err, foundRealtor) => {
       if (err) console.log(err);
 
       console.log(foundRealtor);
