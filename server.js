@@ -43,7 +43,7 @@ app.post('/register', (req, res) => {
     
 // });
 
-// app.use('/realtors', ctrl.realtors);
+app.use('/realtors', ctrl.realtors);
 app.use('/houses', ctrl.houses);
 app.use('/listings', ctrl.listings);
 
