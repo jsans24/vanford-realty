@@ -16,13 +16,15 @@ ul {
 }
 
 /* https://stackoverflow.com/questions/22592064/how-to-align-text-below-an-image-in-css/22592136 */
-div.house-display {
+.house-display {
     vertical-align: top;
     display: inline-block;
     text-align: center;
     width: 300px;
-    margin: 5%
+    margin: 5%;
+    cursor: pointer;
 }
+
 img {
     width: 300px;
     height: 200px;

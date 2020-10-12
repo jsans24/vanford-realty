@@ -8,15 +8,16 @@
 
     <h1>Houses for Sale</h1>
     <% listings.forEach(listing => { %>
-        <div class='house-display'>
+        <div class='house-display' onclick="location.href = '/houses/<%=listing._id%>'">
             
-            <a href='/houses/<%=listing._id%>'><img src='/uploads/<%= listing.img %>' 
+            <img src='/uploads/<%= listing.img %>' 
                 alt='house-id#-<%=listing._id%>'>
-            </a>
                 <span class='house-description'>    
                     <!-- <ul class='text-description'> -->
-                        <a href='/houses/<%=listing._id%>'><%= listing.address %></a>
-                        <a href='/houses/<%=listing._id%>'><%= listing.city %></a>
+                        <%= listing.address %>
+                        <br>
+                        <%= listing.city %>
+                        <br>
                         <% const price = (listing.price) %>
                         <%= '$' + price.toFixed(0) %>
                     <!-- </ul> -->
