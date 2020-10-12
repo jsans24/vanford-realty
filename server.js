@@ -42,7 +42,6 @@ app.post('/register', (req, res) => {
 
 // //post route realtor login
 // app.post('/login', (req, res) => {
-    
 // });
 
 app.use('/realtors', ctrl.realtors);
