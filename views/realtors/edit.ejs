@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Realtor</title>
+</head>
+<body>
+  <h1>Edit: <%= foundRealtor.name %></h1>
+  <form action="/realtors/<%= foundRealtor._id %>?_method=PUT" method="POST">
+    <div>
+      Name: <input type="text" id="name" name="name" value="<%= foundRealtor.name %>">
+    </div>
+    <div>
+      Phone Number: <input type="text" id="phone" name="phone" value="<%= foundRealtor.phone %>">
+    </div>
+    <div>
+      E-Mail: <input type="text" id="e-mail" name="email" value="<%= foundRealtor.email %>">
+    </div>
+    <div>
+      Address: <input type="text" id="address" name="address" value="<%= foundRealtor.address %>">
+    </div>
+    <div>
+      Bio: <input type="text" id="bio" name="bio" value="<%= foundRealtor.bio %>">
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

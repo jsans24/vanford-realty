@@ -21,7 +21,7 @@ app.use(methodOverride('_method'));
 app.get('/', (req, res) => res.render('index'));
 
 app.use('/realtors', ctrl.realtors);
-app.use('/houses', ctrl.houses);
+// app.use('/houses', ctrl.houses);
 
 app.use('*', (req, res) => res.render('404'));
 
