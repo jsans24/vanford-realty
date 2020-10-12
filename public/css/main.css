@@ -63,12 +63,12 @@ img {
 }
 
 .realtor-info {
-    margin-top: 10vh;
+    position: absolute;
 }
 
 .realtors-listings {
     text-align: center;
-    width: 300px;
+    width: 18vw;
     margin: 5%;
     cursor: pointer;
 }
