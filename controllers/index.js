@@ -1,5 +1,5 @@
 module.exports = {
-  // realtors: require('./realtorsController'),
+  realtors: require('./realtorsController'),
   houses: require('./housesController'),
   listings: require('./listingsController')
 };
