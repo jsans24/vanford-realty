@@ -2,5 +2,7 @@ module.exports = {
   realtors: require('./realtorsController'),
   houses: require('./housesController'),
   listings: require('./listingsController'),
-  landing: require('./landingController')
+  landing: require('./landingController'),
+  register: require('./registerController'),
+  login: require('./loginController')
 };

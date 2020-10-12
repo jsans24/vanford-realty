@@ -28,23 +28,9 @@ app.use(methodOverride('_method'));
 
 // ----- ROUTES ----- //  
 
-
-app.get('/register', (req, res) => res.render('register'));
-
-// ----- POST ROUTE REALTOR CREATE ----- //
-app.post('/register', (req, res) => {
-    db.Realtor.create(req.body, (err, newRealtor) => {
-        if(err) return console.log(err)
-        res.redirect('/listings/')
-    });
-});
-
-// ----- GET ROUTE SEARCH LANDING ----- //
-// app.get('/login', (req, res) => {
-//     db.House.findById(req)
-// });
-
 app.use('/', ctrl.landing);
+app.use('/register', ctrl.register);
+app.use('./login', ctrl.login);
 app.use('/realtors', ctrl.realtors);
 app.use('/houses', ctrl.houses);
 app.use('/listings', ctrl.listings);
