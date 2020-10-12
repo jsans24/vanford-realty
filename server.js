@@ -27,10 +27,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 
 // ----- ROUTES ----- //  
-app.get('/', (req, res) => res.render('index'));
+
+
 app.get('/register', (req, res) => res.render('register'));
 
-//post route realtor register
+// ----- POST ROUTE REALTOR CREATE ----- //
 app.post('/register', (req, res) => {
     db.Realtor.create(req.body, (err, newRealtor) => {
         if(err) return console.log(err)
@@ -38,10 +39,12 @@ app.post('/register', (req, res) => {
     });
 });
 
-// //post route realtor login
-// app.post('/login', (req, res) => {
+// ----- GET ROUTE SEARCH LANDING ----- //
+// app.get('/login', (req, res) => {
+//     db.House.findById(req)
 // });
 
+app.use('/', ctrl.landing);
 app.use('/realtors', ctrl.realtors);
 app.use('/houses', ctrl.houses);
 app.use('/listings', ctrl.listings);

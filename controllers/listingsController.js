@@ -32,7 +32,6 @@ router.get('/', (req, res) => {
             })
         })
     });
-   
 });
 
 //create route - get - Complete
