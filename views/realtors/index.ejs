@@ -6,12 +6,16 @@
 <body>
   <%- include('../partials/nav.ejs') %>
 
-  <h1>all realtors</h1>
+  <h1>Our Team</h1>
   <ul>
     <% allRealtors.forEach((realtor) => { %>
-      <li>
-        <a href="/realtors/<%= realtor._id %> "><%= realtor.name %></a>
-      </li>
+      <div class='realtor-display' onclick="location.href = 'realtors/<%= realtor._id %>'">
+            <img src='/uploads/<%= realtor.img %>' alt='realtor-id#-<%=realtor._id%>'>
+                <%= realtor.name %><br>
+                <%= realtor.title %>
+            </span>
+        
+    </div>
     <% }) %>
   </ul>
 </body>

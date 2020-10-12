@@ -7,7 +7,7 @@
   <%- include('../partials/nav.ejs') %>
 
   <h1>Edit: <%= foundRealtor.name %></h1>
-  <form action="/realtors/<%= foundRealtor._id %>?_method=PUT" method="POST">
+  <form action="/realtors/<%= foundRealtor._id %>?_method=PUT" enctype='multipart/form-data' method="POST">
     <div>
       Name: <input type="text" id="name" name="name" value="<%= foundRealtor.name %>">
     </div>
@@ -23,6 +23,9 @@
     <div>
       Bio: <input type="text" id="bio" name="bio" value="<%= foundRealtor.bio %>">
     </div>
+    <div>
+      Image: <input type='file' id='img' name='img' value="<%= foundRealtor.img %> ">
+  </div>
     <button type="submit">Submit</button>
   </form>
 </body>

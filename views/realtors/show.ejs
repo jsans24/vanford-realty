@@ -4,16 +4,41 @@
   <%- include("../partials/header.ejs") %>
 </head>
 <body>
+  <% const phoneNumber = realtor.phone.toString().split('') %>
   <%- include('../partials/nav.ejs') %>
-
   <h1><%= realtor.name %></h1>
-  <div>
+<section class="realtor-page">
+  <div class="realtor-info">
     <ul>
-      <li><%= realtor.phone %></li>
-      <li><%= realtor.email %></li>
+      <li><a href="tel:<%= realtor.phone %>">
+        (<%= phoneNumber[0]%><%=phoneNumber[1]%><%=phoneNumber[2]%>)
+        <%= phoneNumber[3]%><%= phoneNumber[4]%><%= phoneNumber[5]%> - 
+        <%= phoneNumber[6]%><%= phoneNumber[7]%><%= phoneNumber[8]%><%= phoneNumber[9]%>
+      </a></li>
+      <li><a href="mailto:<%= realtor.email %>"><%= realtor.email %></a></li>
       <li><%= realtor.address %></li>
     </ul>
   </div>
-  <p><%= realtor.bio %> </p>
+  <figure class="realtor-img-box">
+    <img src="/uploads/<%= realtor.img %>"  class="realtor-img" alt="<%= realtor.name %>">
+    <figcaption class="realtor-bio"><%= realtor.bio %> </figcaption>
+  </figure>
+
+  <div class="listing-box">
+      <% houses.forEach(house => { %>
+        <figure class="realtors-listings" onclick="location.href='/houses/<%= house._id %>'">
+          <img src="/uploads/<%= house.img %>" alt="house">
+          <figcaption>
+            <ul class="house-listing">
+              <li><%= house.address %></li>
+              <li><%= house.city %></li>
+              <% const price = (house.price) %>
+              <%= '$' + price.toFixed(0) %>
+            </ul>
+          </figcaption>
+        </figure>
+      <% }); %>
+  </div>
+</section>
 </body>
 </html>

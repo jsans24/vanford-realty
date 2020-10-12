@@ -1,7 +1,22 @@
 const express = require('express');
 const router = express.Router();
+const db = require('../models')
+const fs = require('fs');
+const path = require('path');
+const multer = require('multer');
 
-const db = require('../models');
+//multer middleware
+//https://www.geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './public/uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '_' + Date.now() + '_' + file.originalname)
+    }
+});
+
+const upload = multer({storage: storage}).single('img');
 
 router.get('/', (req, res) => {
   db.Realtor.find({}, (err, allRealtors) => {
@@ -24,13 +39,16 @@ router.post('/', (req, res) => {
 });
 
 router.get('/:realtorId', (req, res) => {
-  db.Realtor.findById(req.params.realtorId, (err, foundRealtor) => {
-      if (err) console.log(err);
+  db.Realtor.findById(req.params.realtorId).populate('houses').exec((err, foundRealtor) => {
+    if (err) console.log(err);
 
-      console.log(foundRealtor);
+    console.log(foundRealtor.houses[2].address);
 
-      res.render('realtors/show', {realtor: foundRealtor});
-    });
+        res.render('realtors/show', {
+          realtor: foundRealtor,
+          houses: foundRealtor.houses,
+        });
+  });
 });
 
 router.get('/:realtorId/edit', (req, res) => {
@@ -42,14 +60,40 @@ router.get('/:realtorId/edit', (req, res) => {
 });
 
 router.put('/:realtorId', (req, res) => {
-  db.Realtor.findByIdAndUpdate(
-    req.params.realtorId,
-    req.body,
-    {new: true},
-    (err, updatedRealtor) => {
-    if (err) console.log(err);
+  upload(req, res, (err) => {
 
-    res.redirect(`/realtors/${updatedRealtor._id}`);
+    if (err) return console.log(err);
+    
+      if (req.file) {
+        const obj = {
+          address: req.body.address,
+          name: req.body.name,
+          phone: req.body.phone,
+          email: req.body.email,
+          bio: req.body.bio,
+          img: req.file.filename
+        };
+
+        db.Realtor.findByIdAndUpdate(
+          req.params.realtorId,
+          obj,
+          {new: true},
+          (err, updatedRealtor) => {
+          if (err) console.log(err);
+      
+          res.redirect(`/realtors/${updatedRealtor._id}`);
+        });
+      } else {
+        db.Realtor.findByIdAndUpdate(
+          req.params.realtorId,
+          req.body,
+          {new: true},
+          (err, updatedRealtor) => {
+          if (err) console.log(err);
+      
+          res.redirect(`/realtors/${updatedRealtor._id}`);
+        });
+      };
   });
 });
 
