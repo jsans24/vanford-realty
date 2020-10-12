@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include("../partials/header.ejs") %>
+    <%- include('../partials/header.ejs') %>
 </head>
 <body>
     <%- include('../partials/nav.ejs') %>
 
-    <h1> <%=listing.address%> </h1>
+    <h2> <%=listing.address%> </h2>
     <h3> <%=listing.city %></h3>
+    <% const price = (listing.price) %>
+    <h4><%= '$' + price.toFixed(0) %></h4>
 
-    <h4> <%=listing.price %></h4>
+    <p class='show-realtor'>MEET THE REALTOR</p>
 
-    <img class="house-listing" src="/uploads/<%= listing.img %>" alt="house-id#-<%=listing._id%>">
-
-    <ul>
-        <li>Size: <%=listing.size%> </li>
-        <li>Bedrooms: <%=listing.bedrooms%> </li>
-        <li>Bathrooms: <%listing.bathrooms%> </li>
-    </ul>
+    <div class='show-page'>
+        <div class='realtor'>
+            <img src='https://loremflickr.com/320/240'/>
+        </div>
+    
+        <div class='show-house'>
+            <img class='house-listing' src='/uploads/<%= listing.img %>' alt='house-id#-<%=listing._id%>'>
+            <div>
+                <p>Property Details:</p>
+                <ul>
+                    <li>Size: <%=listing.size%> </li>
+                    <li>Bedrooms: <%=listing.bedrooms%> </li>
+                    <li>Bathrooms: <%=listing.bathrooms%> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    
 </body>
 </html>

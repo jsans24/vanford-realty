@@ -28,8 +28,6 @@ app.use(methodOverride('_method'));
 
 // ----- ROUTES ----- //  
 app.get('/', (req, res) => res.render('index'));
-
-
 app.get('/register', (req, res) => res.render('register'));
 
 //post route realtor register

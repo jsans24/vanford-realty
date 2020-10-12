@@ -16,13 +16,14 @@
         <ul class="house-listing">
             <li><%= listing.address %></li>
             <li><%= listing.city %></li>
-            <li><%= listing.price %> </li>
+            <% const price = (listing.price) %>
+            <li><%= '$' + price.toFixed(0) %> </li>
         </ul>
 
         <form action='/listings/<%= listing._id %>?_method=DELETE' method='POST'>
             <input type='submit' value='Remove Listing'>
         </form>
-        <form action='/listings/<%= listing._id %>edit' method='POST'>
+        <form action='/listings/<%= listing._id %>/edit' method='GET'>
             <input type='submit' value='Edit Listing'>
         </form>
     <% }) %>
