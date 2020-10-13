@@ -27,21 +27,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 
 // ----- ROUTES ----- //  
-app.get('/', (req, res) => res.render('index'));
-app.get('/register', (req, res) => res.render('register'));
 
-//post route realtor register
-app.post('/register', (req, res) => {
-    db.Realtor.create(req.body, (err, newRealtor) => {
-        if(err) return console.log(err)
-        res.redirect('/listings/')
-    });
-});
-
-// //post route realtor login
-// app.post('/login', (req, res) => {
-// });
-
+app.use('/', ctrl.landing);
+app.use('/register', ctrl.register);
+app.use('./login', ctrl.login);
 app.use('/realtors', ctrl.realtors);
 app.use('/houses', ctrl.houses);
 app.use('/listings', ctrl.listings);

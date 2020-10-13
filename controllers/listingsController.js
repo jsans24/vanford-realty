@@ -23,7 +23,14 @@ const upload = multer({storage: storage}).single('img');
 router.get('/', (req, res) => {
     db.House.find({}, (err, houseListings) => {
         if(err) return console.log(err);
-        res.render('listings/index', {listings: houseListings})
+        
+        db.Realtor.find({}, (err, realtors) => {
+            if(err) return console.log(err);
+            res.render('listings/index', {
+                listings: houseListings,
+                realtors: realtors
+            })
+        })
     });
 });
 
