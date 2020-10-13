@@ -23,14 +23,7 @@ const upload = multer({storage: storage}).single('img');
 router.get('/', (req, res) => {
     db.House.find({}, (err, houseListings) => {
         if(err) return console.log(err);
-        
-        db.Realtor.find({}, (err, realtors) => {
-            if(err) return console.log(err);
-            res.render('listings/index', {
-                listings: houseListings,
-                realtors: realtors
-            })
-        })
+        res.render('listings/index', {listings: houseListings})
     });
 });
 
@@ -61,8 +54,6 @@ router.post('/', (req, res) => {
 
         db.House.create(obj, (err, newListing) => {
             if(err) return console.log(err);
-
-            console.log(newListing);
     
             db.Realtor.findById(req.body.realtor, (err, realtor) => {
                 if(err) return console.log(err);
@@ -101,7 +92,15 @@ router.delete('/:id', (req, res) => {
 router.get('/:id/edit', (req, res) => {
     db.House.findById(req.params.id, (err, listingForEdit) =>{
         if(err) return console.log(err);
-        res.render('listings/edit', {listing: listingForEdit})
+
+        db.Realtor.find({}, (err, allRealtors) => {
+            if (err) console.log(err);
+
+            res.render('listings/edit', {
+                listing: listingForEdit,
+                realtors: allRealtors,
+            });
+        });
     });
 });
 
