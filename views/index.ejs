@@ -5,29 +5,31 @@
 </head>
 <body>
     <%- include('./partials/nav.ejs') %>
-    <div class='landing-page'>
-        <!-- <div class='blog'>
-            <h5>Vanford Blog</h5>
-        </div> -->
-        <div class='house-billboard'>
-            <h5>Listing of the Day</h5>
-            <% if (house) { %>
-            <img class="landing-picture" src='<%=house.img %>'>
-            <h4><%= house.address %></h4>
-            <h5><%= house.city %></h5>
-            <h5><%= house.price %></h5>
-            <% } %>
+    <div class="container">
+        <div class='landing-page'>
+            <div class='white-space'>
+                
+            </div>
+            <div class='house-billboard'>
+                <h5 class='listing'>Listing of the Day</h5>
+                <% if (house) { %>
+                <img class="landing-picture" src='<%=house.img %>'>
+                <h4 class='listing'><%= house.address %></h4>
+                <h5 class='listing'><%= house.city %></h5>
+                <% const price = (house.price) %>
+                <h5 class='listing'><%= '$' + price.toFixed(0) %></h5>
+                <% } %>
+            </div>
+            <div class='realtor-month'>
+                <h5>Realtor of the Month</h5>
+                <% if(realtor) { %>
+                <img src='<%=realtor.img %>'>
+                <h6><%= realtor.name %></h6>
+                <% } %>    
+            </div>
         </div>
-        <div class='realtor-month'>
-            <h5>Realtor of the Month</h5>
-            <% if(realtor) { %>
-            <img src='<%=realtor.img %>'>
-            <h6><%= realtor.name %></h6>
-            <% } %>    
-
-        </div>
-
     </div>
+    
     <%- include('./partials/footer.ejs') %>
 </body>
 </html>

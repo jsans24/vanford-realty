@@ -4,6 +4,7 @@ const citySchema = new mongoose.Schema ({
         type: String,
         required: true
     },
+    population: Number,
     keyAttractions: [{
         type: String
     }],
@@ -11,6 +12,7 @@ const citySchema = new mongoose.Schema ({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'House',
     }],
+    bio: String,
     img: String
 })
 

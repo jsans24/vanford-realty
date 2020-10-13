@@ -13,14 +13,12 @@
             <img src='/uploads/<%= listing.img %>' 
                 alt='house-id#-<%=listing._id%>'>
                 <span class='house-description'>    
-                    <!-- <ul class='text-description'> -->
                         <%= listing.address %>
                         <br>
                         <%= listing.city %>
                         <br>
                         <% const price = (listing.price) %>
                         <%= '$' + price.toFixed(0) %>
-                    <!-- </ul> -->
                 </span>
             
         </div>

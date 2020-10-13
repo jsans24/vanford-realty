@@ -68,6 +68,7 @@ app.use('/logout', ctrl.logout);
 app.use('/realtors', ctrl.realtors);
 app.use('/houses', ctrl.houses);
 app.use('/listings', ctrl.listings);
+app.use('/cities', ctrl.cities);
 
 app.use('*', (req, res) => res.render('404'));
 

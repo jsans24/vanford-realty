@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/header.ejs') %>
+</head>
+<body>
+    <%- include('../partials/nav.ejs') %>
+
+    <h1>Cities</h1>
+    <% cities.forEach(city => { %>
+        <div class='house-display' onclick="location.href = '/cities/<%=city._id%>'">
+            
+            <img src='/uploads/<%= city.img %>' 
+                alt='city-id#-<%=city._id%>'>
+            <span class='house-description'>    
+                <h3><%= city.name %>
+            </span>
+        </div>
+        <% }) %>
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>

@@ -4,9 +4,12 @@
     <%- include('../partials/header.ejs') %>
 </head>
 <body>
+  <%- include('../partials/nav.ejs') %>
+  <div class='container'>
+    <div class='form-screen'>
     <h1>Edit A House Listing</h1>
     <form action='/listings/<%= listing._id%>?_method=PUT' method='POST'>
-      <div class='form-group col-md-4'>
+      <div class='form-group col-md-6'>
         <label for='realtor'>Listing Realtor:</label>
         <select class='form-control' id='realtor' name="realtor">
           <% realtors.forEach(realtor => { %>
@@ -14,63 +17,41 @@
           <% }) %> 
         </select>
       </div>
-        <div>
+        <div class='form-group col-md-6'>
             <label for='address'>Address:</label>
-            <input type='text' name='address' value='<%=listing.address%>' />
+            <input type='text' class='form-control' id='address' name='address'
+            value='<%=listing.address%>' >
         </div>
-        <div>
-            <label for='city'>City:</label>
-            <input type='text' name='city' value='<%=listing.city%>' />
-        </div>
-        <div>
-            <label for='price'>Price:</label>
-            <input type='number' name='price' value='<%=listing.price%>' />
-        </div>
-        <div>
-            <label for='bedrooms'>Number of Bedrooms:</label>
-            <input type='number' name='bedrooms' value='<%=listing.bedrooms%>' />
-        </div>
-        <div>
-            <label for='bathrooms'>Number of Bathrooms:</label>
-            <input type='number' name='bathrooms' value='<%=listing.bathrooms%>' />
-        </div>
-        <div>
-            <label for='size'>Size (sq. ft.):</label>
-            <input type='number' name='size' value='<%=listing.size%>' />
-        </div>
-        <input type='submit' value='Edit Listing'/>
-    </form>
-
-    <form action='/listings/<%= listing._id%>?_method=PUT' method='POST'>
-        <div class='form-group col-md-4'>
-            <label for='address'>Address:</label>
-            <input type='text' class='form-control' id='address' value='<%=listing.address%>' >
-        </div>
-        <div class='form-group col-md-4'>
+        <div class='form-group col-md-6'>
           <label for='city'>City:</label>
-          <input type='text' class='form-control' id='city' name='city'>
+          <input type='text' class='form-control' id='city' name='city'
+          value='<%=listing.city%>'>
         </div>
-        <div class='form-group col-md-4'>
+        <div class='form-group col-md-6'>
         <label for='price'>Price:</label>
-          <input type='number' class='form-control' id='price' name='price' >
+          <input type='number' class='form-control' id='price' name='price' 
+          value='<%=listing.price%>'>
         </div>
-        <div class='form-group col-md-4'>
+        <div class='form-group col-md-6'>
           <label for='bedrooms'>Number of Bedrooms:</label>
-          <input type="number" class='form-control' id='bedrooms' name='bedrooms'>
+          <input type="number" class='form-control' id='bedrooms' name='bedrooms'
+          value='<%=listing.bedrooms%>'>
         </div>
-        <div class='form-group col-md-4'>
+        <div class='form-group col-md-6'>
           <label for='bathrooms'>Number of Bathrooms:</label>
-            <input type="number" class="form-control" id='bathrooms' name='bathrooms'>
+            <input type="number" class="form-control" id='bathrooms' name='bathrooms'
+            value='<%=listing.bathrooms%>'>
         </div>
-          <div class='form-group col-md-4'>
+          <div class='form-group col-md-6'>
             <label for='size'>Size (sq.ft.):</label>
-            <input type='number' class='form-control' id='size' name='size'>
+            <input type='number' class='form-control' id='size' name='size'
+            value='<%=listing.size%>'>
           </div>
-          <div class='form-group col-md-4'>
-            <label for='img'>Listing Photo:</label>
-            <input type='file' class='form-control' id='img' name='img'>
+          <div class='col text-center'>
+            <button type='submit' class='btn btn-primary'>Add Listing</button>
           </div>
-        <button type='submit' class='btn btn-primary'>Add Listing</button>
       </form>
+    </div>
+  </div>
 </body>
 </html>
