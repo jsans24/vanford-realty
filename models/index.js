@@ -14,5 +14,5 @@ mongoose.connection.on('error', (err) => console.log(err));
 module.exports = {
   Realtor: require('./Realtor'),
   House: require('./House'),
-  City: require('./City')
+  City: require('./City'),
 };

@@ -20,10 +20,10 @@ router.get('/', (req, res) => {
                 realtorArray.push(realtor)
             });
             const randomRealtor = realtorArray[Math.floor(Math.random() * realtorArray.length)];
-            console.log(randomRealtor)
             res.render('index', {
                 house: randomHouse,
-                realtor: randomRealtor
+                realtor: randomRealtor,
+                user: req.user,
             })
         })
         
