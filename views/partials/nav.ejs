@@ -17,9 +17,15 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/register">Realtor Login</a>
-                    </li>
+                    <% if (user) { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/listings">Admin</a>
+                        </li>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">Realtor Login</a>
+                        </li>
+                    <% } %>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input type="text" placeholder="address">

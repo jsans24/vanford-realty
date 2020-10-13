@@ -22,12 +22,13 @@ router.get('/', (req, res) => {
   db.Realtor.find({}, (err, allRealtors) => {
     if (err) return console.log(err);
 
-    res.render('realtors/index', {allRealtors});
+    res.render('realtors/index', {allRealtors,
+      user: req.user,});
   });
 });
 
 router.get('/new', (req, res) => {
-  res.render('realtors/new')
+  res.render('realtors/new', {user: req.user,})
 });
 
 // router.post('/', (req, res) => {
@@ -47,6 +48,7 @@ router.get('/:realtorId', (req, res) => {
     res.render('realtors/show', {
       realtor: foundRealtor,
       houses: foundRealtor.houses,
+      user: req.user,
     });
   });
 });
@@ -55,7 +57,8 @@ router.get('/:realtorId/edit', (req, res) => {
   db.Realtor.findById(req.params.realtorId, (err, foundRealtor) => {
     if (err) console.log(err);
 
-    res.render('realtors/edit', {foundRealtor});
+    res.render('realtors/edit', {foundRealtor,
+      user: req.user,});
   });
 });
 

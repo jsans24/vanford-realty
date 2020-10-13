@@ -19,7 +19,8 @@ const upload = multer({storage: storage}).single('img');
 router.get('/', (req, res) => {
     db.House.find({}, (err, houseListings) => {
         if(err) return console.log(err);
-        res.render('houses/index', {listings: houseListings})
+        res.render('houses/index', {listings: houseListings,
+            user: req.user,})
     });
 });
 
@@ -27,7 +28,8 @@ router.get('/search', (req, res) => {
     db.House.find({}, (err, allHouses) => {
         if (err) console.log(err);
 
-        res.render('houses/search', {listings: allHouses});
+        res.render('houses/search', {listings: allHouses,
+            user: req.user,});
     });
 });
 
@@ -38,7 +40,10 @@ router.get('/:id', (req, res) => {
 
         console.log(listing);
 
-        res.render('houses/show', {listing, listing})
+        res.render('houses/show', {
+            listing, listingm,
+            user: req.user,
+        })
     });
 });
 

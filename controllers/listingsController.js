@@ -29,7 +29,8 @@ router.get('/', ensureAuthenticated, (req, res) => {
             if(err) return console.log(err);
             res.render('listings/index', {
                 listings: houseListings,
-                realtors: realtors
+                realtors: realtors,
+                user: req.user,
             })
         })
     });
@@ -39,7 +40,8 @@ router.get('/', ensureAuthenticated, (req, res) => {
 router.get('/new', (req, res) => {
     db.Realtor.find({}, (err, realtors) => {
         if(err) return console.log(err);
-        res.render('listings/new', {realtors, realtors});
+        res.render('listings/new', {realtors, realtors,
+            user: req.user,});
     })
 });
 
@@ -108,6 +110,7 @@ router.get('/:id/edit', (req, res) => {
             res.render('listings/edit', {
                 listing: listingForEdit,
                 realtors: allRealtors,
+                user: req.user,
             });
         });
     });
