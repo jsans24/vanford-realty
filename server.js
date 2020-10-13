@@ -5,8 +5,12 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const flash = require('connect-flash');
 const session = require('express-session');
+const passport = require('passport');
 const methodOverride = require('method-override');
 require('dotenv').config();
+
+// ----- PASSPORT CONFIG ----- //
+require('./config/passport')(passport);
 
 const PORT = 4000;
 
@@ -35,6 +39,10 @@ app.use(session({
     saveUninitialized: true,
 }));
 
+// ------ PASSPORT ----- //
+app.use(passport.initialize());
+app.use(passport.session());
+
 // ----- CONNECT FLASH (typically used in combination with redirects, 
 // ensuring that the message is available to the next page that is to be rendered)----- //
 app.use(flash());
@@ -43,6 +51,7 @@ app.use(flash());
 app.use((req,res, next) => {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
     next();
 })
 
@@ -51,6 +60,7 @@ app.use((req,res, next) => {
 app.use('/', ctrl.landing);
 app.use('/register', ctrl.register);
 app.use('/login', ctrl.login);
+app.use('/logout', ctrl.logout);
 app.use('/realtors', ctrl.realtors);
 app.use('/houses', ctrl.houses);
 app.use('/listings', ctrl.listings);
