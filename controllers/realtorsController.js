@@ -42,10 +42,12 @@ router.get('/:realtorId', (req, res) => {
   db.Realtor.findById(req.params.realtorId).populate('houses').exec((err, foundRealtor) => {
     if (err) console.log(err);
 
-        res.render('realtors/show', {
-          realtor: foundRealtor,
-          houses: foundRealtor.houses,
-        });
+    console.log(foundRealtor);
+
+    res.render('realtors/show', {
+      realtor: foundRealtor,
+      houses: foundRealtor.houses,
+    });
   });
 });
 
