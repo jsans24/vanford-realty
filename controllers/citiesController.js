@@ -4,17 +4,17 @@ const db = require('../models');
 
 //index route - Complete
 router.get('/', (req, res) => {
-    db.House.find({}, (err, houseListings) => {
+    db.City.find({}, (err, cities) => {
         if(err) return console.log(err);
-        res.render('houses/index', {listings: houseListings})
+        res.render('cities/index', {cities})
     });
 });
 
 //show route - Complete
 router.get('/:id', (req, res) => {
-    db.House.findById(req.params.id, (err, listing) =>{
+    db.City.findById(req.params.id, (err, city) =>{
         if(err) return console.log(err);
-        res.render('houses/show', {listing, listing})
+        res.render('cities/show', {city})
     });
 });
 

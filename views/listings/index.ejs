@@ -13,22 +13,24 @@
         <div class='new-listing col text-center'>
             <button><a href='/listings/new'>Add a New Listing</a></button>
         </div>
-            
         <% listings.forEach(listing => { %>
-            <ul class="house-listing">
-                <li><%= listing.address %></li>
-                <li><%= listing.city %></li>
-                <% const price = (listing.price) %>
-                <li><%= '$' + price.toFixed(0) %> </li>
-            </ul>
-        
-            <form action='/listings/<%= listing._id %>?_method=DELETE' method='POST'>
-                <input type='submit' value='Remove Listing'>
-            </form>
-            <form action='/listings/<%= listing._id %>/edit' method='GET'>
-                <input type='submit' value='Edit Listing'>
-            </form>
+            <div class='house-listing'>
+                <ul>
+                    <li><%= listing.address %></li>
+                    <li><%= listing.city %></li>
+                    <% const price = (listing.price) %>
+                    <li><%= '$' + price.toFixed(0) %> </li>
+                </ul>
+            
+                <form action='/listings/<%= listing._id %>?_method=DELETE' method='POST'>
+                    <input type='submit' value='Remove Listing'>
+                </form>
+                <form action='/listings/<%= listing._id %>/edit' method='GET'>
+                    <input type='submit' value='Edit Listing'>
+                </form>
+            </div>  
         <% }) %>
+        
         <div class='update-realtor col text-center'>
             <form action='/realtors/<%= currentUser._id %>?_method=DELETE' method='POST'>
                 <input type='submit' value='Remove <%=currentUser.name%>'>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/header.ejs') %>
+</head>
+<body>
+    <%- include('../partials/nav.ejs') %>
+    <div class='container'>
+        <h2> <%=city.name%> </h2>
+            <div class='show-house'>
+                <img src='/uploads/<%= listing.img %>' alt='house-id#-<%=listing._id%>'>
+                <div>
+                    <h4>About <%=city.name %>:</h4>
+                    <ul>
+                        <li>Population: <%=city.population%> </li>
+                        <li>Bedrooms: <%=listing.bedrooms%> </li>
+                        <li>Bathrooms: <%=listing.bathrooms%> </li>
+                    </ul>
+                </div>
+            </div>
+    </div>
+    
+    
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>

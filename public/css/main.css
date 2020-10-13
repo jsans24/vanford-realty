@@ -31,6 +31,17 @@ section {
     background:  #9cada4;
 }
 
+.social-media {
+    padding: 3%;
+    margin: 1%;
+    display: flex;
+    flex-direction: column;
+}
+
+.follow-us {
+    margin-right: 1%;
+    width: 150px;
+}
 
 /* LANDING PAGE */
 .landing-page {
@@ -43,11 +54,9 @@ section {
     height: 300px
 }
 
-/* .blog {
-    position: absolute;
-    bottom: 25%;
-    right: 14%;
-} */
+.listing {
+    text-align: center;
+}
 
 /* LISTINGS INDEX */
 .new-listing {
@@ -57,6 +66,12 @@ section {
 .update-realtor{
     display: block;
     margin: 2%;
+}
+
+.house-listing {
+    display: flex;
+    align-content: center;
+    margin: 2%
 }
 
 /* LOGIN / HOUSING FORMS  */
