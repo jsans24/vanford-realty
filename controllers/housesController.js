@@ -47,6 +47,16 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// router.get('/search', (req, res) => {
+//     db.House.find({}, (err, allHouses) => {
+//         if (err) console.log(err);
+
+//         res.render('search', {
+//             houses: allHouses,
+//             user: req.user,
+//         })
+//     })
+// })
 
 
 
