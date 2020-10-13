@@ -6,5 +6,5 @@ module.exports = {
   landing: require('./landingController'),
   register: require('./registerController'),
   login: require('./loginController'),
-  logout: require('./logoutController')
+  logout: require('./logoutController'),
 };

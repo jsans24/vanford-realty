@@ -22,12 +22,13 @@ router.get('/', (req, res) => {
   db.Realtor.find({}, (err, allRealtors) => {
     if (err) return console.log(err);
 
-    res.render('realtors/index', {allRealtors});
+    res.render('realtors/index', {allRealtors,
+      user: req.user,});
   });
 });
 
 router.get('/new', (req, res) => {
-  res.render('realtors/new')
+  res.render('realtors/new', {user: req.user,})
 });
 
 // router.post('/', (req, res) => {
@@ -42,12 +43,13 @@ router.get('/:realtorId', (req, res) => {
   db.Realtor.findById(req.params.realtorId).populate('houses').exec((err, foundRealtor) => {
     if (err) console.log(err);
 
-    console.log(foundRealtor.houses[2].address);
+    console.log(foundRealtor);
 
-        res.render('realtors/show', {
-          realtor: foundRealtor,
-          houses: foundRealtor.houses,
-        });
+    res.render('realtors/show', {
+      realtor: foundRealtor,
+      houses: foundRealtor.houses,
+      user: req.user,
+    });
   });
 });
 
@@ -55,7 +57,8 @@ router.get('/:realtorId/edit', (req, res) => {
   db.Realtor.findById(req.params.realtorId, (err, foundRealtor) => {
     if (err) console.log(err);
 
-    res.render('realtors/edit', {foundRealtor});
+    res.render('realtors/edit', {foundRealtor,
+      user: req.user,});
   });
 });
 
@@ -63,6 +66,8 @@ router.put('/:realtorId', (req, res) => {
   upload(req, res, (err) => {
 
     if (err) return console.log(err);
+
+    console.log(req.body);
     
       if (req.file) {
         const obj = {

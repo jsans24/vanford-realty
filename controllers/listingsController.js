@@ -24,12 +24,15 @@ const upload = multer({storage: storage}).single('img');
 router.get('/', ensureAuthenticated, (req, res) => {
     db.House.find({}, (err, houseListings) => {
         if(err) return console.log(err);
+
+        console.log(req.user.houses.address);
         
         db.Realtor.find({}, (err, realtors) => {
             if(err) return console.log(err);
             res.render('listings/index', {
                 listings: houseListings,
-                currentUser: req.user
+                realtors: realtors,
+                user: req.user,
             })
         })
     });
@@ -39,7 +42,8 @@ router.get('/', ensureAuthenticated, (req, res) => {
 router.get('/new', (req, res) => {
     db.Realtor.find({}, (err, realtors) => {
         if(err) return console.log(err);
-        res.render('listings/new', {realtors, realtors});
+        res.render('listings/new', {realtors, realtors,
+            user: req.user,});
     })
 });
 
@@ -58,7 +62,7 @@ router.post('/', (req, res) => {
             type: req.body.type,
             realtor: req.body.realtor,
             img: req.file.filename,
-            };
+        };
 
         db.House.create(obj, (err, newListing) => {
             if(err) return console.log(err);
@@ -102,20 +106,46 @@ router.delete('/:id', (req, res) => {
 router.get('/:id/edit', (req, res) => {
     db.House.findById(req.params.id, (err, listingForEdit) =>{
         if(err) return console.log(err);
-        res.render('listings/edit', {listing: listingForEdit})
+        db.Realtor.find({}, (err, allRealtors) => {
+            if (err) console.log(err);
+
+            res.render('listings/edit', {
+                listing: listingForEdit,
+                realtors: allRealtors,
+                user: req.user,
+            });
+        });
     });
 });
 
 //put route - Complete
 router.put('/:id', (req, res) => {
-    db.House.findByIdAndUpdate(
-        req.params.id,
-        req.body,
-        {new: true},
-        (err, editedListing) => {
+    db.Realtor.findOne({houses: req.params.id}, (err, realtor) => {
+        if(err) return console.log(err);
+
+        realtor.houses.remove(req.params.id);
+        realtor.save((err) => {
             if(err) return console.log(err);
-            res.redirect(`/listings/`)
         });
+        
+        db.House.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {new: true},
+            (err, editedListing) => {
+                if(err) return console.log(err);
+                
+                db.Realtor.findById(req.body.realtor, (err, realtor) => {
+                    if(err) return console.log(err);
+            
+                    realtor.houses.push(req.params.id);
+                    realtor.save((err) => {
+                        if(err) return console.log(err);
+                        res.redirect('/listings')
+                    });
+            });
+    });
+});
 });
 
 module.exports = router;

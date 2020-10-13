@@ -30,6 +30,10 @@ const ctrl = require('./controllers');
 // ----- MIDDLEWARE ----- //    
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
+app.use((req,res,next) => {
+    res.locals.currentUser = req.user;
+    next();
+});
 
 //----- EXPRESS SESSION (every user of your API or website will be assigned a unique 
 //session, and this allows you to store the user state) ----- //
