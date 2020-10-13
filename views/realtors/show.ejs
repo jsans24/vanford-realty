@@ -4,20 +4,24 @@
   <%- include("../partials/header.ejs") %>
 </head>
 <body>
-  <% const phoneNumber = realtor.phone.toString().split('') %>
-  <% const address = realtor.address.split(' ') %>
+  <% if (realtor.phone) var phoneNumber = realtor.phone.toString().split('') %>
+  <% if (realtor.address) var address = realtor.address.split(' ') %>
   <%- include('../partials/nav.ejs') %>
   <h1><%= realtor.name %></h1>
 <section class="realtor-page">
   <div class="realtor-info">
     <ul>
-      <li><a href="tel:<%= realtor.phone %>">
-        (<%= phoneNumber[0]%><%=phoneNumber[1]%><%=phoneNumber[2]%>)
-        <%= phoneNumber[3]%><%= phoneNumber[4]%><%= phoneNumber[5]%> - 
-        <%= phoneNumber[6]%><%= phoneNumber[7]%><%= phoneNumber[8]%><%= phoneNumber[9]%>
-      </a></li>
+      <% if (phoneNumber) { %>
+        <li><a href="tel:<%= realtor.phone %>">
+          (<%= phoneNumber[0]%><%=phoneNumber[1]%><%=phoneNumber[2]%>)
+          <%= phoneNumber[3]%><%= phoneNumber[4]%><%= phoneNumber[5]%> - 
+          <%= phoneNumber[6]%><%= phoneNumber[7]%><%= phoneNumber[8]%><%= phoneNumber[9]%>
+        </a></li>
+      <% } %>
       <li><a href="mailto:<%= realtor.email %>"><%= realtor.email %></a></li>
-      <li><a href="http://maps.google.com/maps?q=<%= address[0] %>+<%= address[1] %>+<%= address[2] %>,+<%= realtor.city %>"></a><%= realtor.address %></li> 
+      <% if (address) { %>
+        <li><a href="http://maps.google.com/maps?q=<%= address[0] %>+<%= address[1] %>+<%= address[2] %>,+<%= realtor.city %>"></a><%= realtor.address %></li>
+      <% } %> 
     </ul>
   </div>
   <figure class="realtor-img-box">
