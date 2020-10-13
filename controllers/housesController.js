@@ -23,6 +23,14 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/search', (req, res) => {
+    db.House.find({}, (err, allHouses) => {
+        if (err) console.log(err);
+
+        res.render('houses/search', {listings: allHouses});
+    });
+});
+
 //show route - Complete
 router.get('/:id', (req, res) => {
     db.House.findById(req.params.id, (err, listing) =>{
@@ -30,6 +38,7 @@ router.get('/:id', (req, res) => {
         res.render('houses/show', {listing, listing})
     });
 });
+
 
 
 

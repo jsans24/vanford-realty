@@ -5,7 +5,7 @@
 </head>
 <body>
   <% const phoneNumber = realtor.phone.toString().split('') %>
-  <% const address = realtor.address.split(' ') %>
+  <% //const address = realtor.address.split(' ') %>
   <%- include('../partials/nav.ejs') %>
   <h1><%= realtor.name %></h1>
 <section class="realtor-page">
@@ -17,7 +17,7 @@
         <%= phoneNumber[6]%><%= phoneNumber[7]%><%= phoneNumber[8]%><%= phoneNumber[9]%>
       </a></li>
       <li><a href="mailto:<%= realtor.email %>"><%= realtor.email %></a></li>
-      <li><a href="http://maps.google.com/maps?q=<%= address[0] %>+<%= address[1] %>+<%= address[2] %>,+<%= realtor.city %>"><%= realtor.address %></a></li>
+       <li><!--<a href="http://maps.google.com/maps?q=<%= //address[0] %>+<%= //address[1] %>+<%= //address[2] %>,+<%= //realtor.city %>"></a>--><%= realtor.address %></li> 
     </ul>
   </div>
   <figure class="realtor-img-box">
