@@ -6,7 +6,14 @@ const realtorSchema = new mongoose.Schema({
   required: true,
   },
   phone: Number,
-  email: String,
+  email: {
+  type: String,
+  required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
   bio: {
     type: String,
     minlength: 20,

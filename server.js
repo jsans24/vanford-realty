@@ -30,7 +30,7 @@ app.use(methodOverride('_method'));
 
 app.use('/', ctrl.landing);
 app.use('/register', ctrl.register);
-app.use('./login', ctrl.login);
+app.use('/login', ctrl.login);
 app.use('/realtors', ctrl.realtors);
 app.use('/houses', ctrl.houses);
 app.use('/listings', ctrl.listings);

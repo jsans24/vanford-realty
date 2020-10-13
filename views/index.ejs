@@ -6,12 +6,9 @@
 <body>
     <%- include('./partials/nav.ejs') %>
     <div class='landing-page'>
-        <div class='featured-homes'>
-            <h5>Featured Homes</h5>
-        </div>
-        <div class='search'>
-    
-        </div>
+        <!-- <div class='blog'>
+            <h5>Vanford Blog</h5>
+        </div> -->
         <div class='house-billboard'>
             <h5>Listing of the Day</h5>
             <img class="landing-picture" src='<%=house.img %>'>
@@ -24,9 +21,7 @@
             <img src='<%=realtor.img %>'>
             <h6><%= realtor.name %></h6>
         </div>
-        <!-- <div class='blog'>
-            <h5>Vanford Blog</h5>
-        </div> -->
+
     </div>
     <%- include('./partials/footer.ejs') %>
 </body>

@@ -30,13 +30,13 @@ router.get('/new', (req, res) => {
   res.render('realtors/new')
 });
 
-router.post('/', (req, res) => {
-  db.Realtor.create(req.body, (err, newRealtor) => {
-    if (err) console.log(err);
+// router.post('/', (req, res) => {
+//   db.Realtor.create(req.body, (err, newRealtor) => {
+//     if (err) console.log(err);
 
-    res.redirect('/realtors');
-  });
-});
+//     res.redirect('/realtors');
+//   });
+// });
 
 router.get('/:realtorId', (req, res) => {
   db.Realtor.findById(req.params.realtorId).populate('houses').exec((err, foundRealtor) => {
