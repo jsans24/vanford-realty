@@ -11,33 +11,68 @@ ul {
     list-style-type: none;
 }
 
-section {
-    margin: 2% 0;
-}
-
+/* NAVBAR PARTIAL */
 .navbar {
     min-height: 80px;
 }
 
+section {
+    margin: 2% 0;
+}
+
+/* FOOTER PARTIAL */
+.address {
+    padding: 3%;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    background:  #9cada4;
+}
+
+
+/* LANDING PAGE */
 .landing-page {
     display: flex;
     justify-content: space-between;
 }
 
+.landing-picture {
+    width: 400px;
+    height: 300px
+}
+
+/* .blog {
+    position: absolute;
+    bottom: 25%;
+    right: 14%;
+} */
+
+/* LISTINGS INDEX */
 .new-listing {
     margin: 20px 0 20px 0;
 }
 
+.update-realtor{
+    display: block;
+    margin: 2%;
+}
+
+/* LOGIN / HOUSING FORMS  */
+form {
+    display: inline;    
+}
+
+.form-screen {
+    width: 50%;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+
+/* HOUSES INDEX */
 /* https://stackoverflow.com/questions/22592064/how-to-align-text-below-an-image-in-css/22592136 */
 .house-display {
-    vertical-align: top;
-    display: inline-block;
-    text-align: center;
-    width: 300px;
-    margin: 5%;
-    cursor: pointer;
-}
-.realtor-display {
     vertical-align: top;
     display: inline-block;
     text-align: center;
@@ -51,12 +86,14 @@ img {
     height: 200px;
     background-color: grey;
 }
+
 .house-description {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
 }
 
+/* HOUSES SHOW */
 .show-page {
     display: flex;
     justify-content: space-around;
@@ -66,19 +103,23 @@ img {
     margin: 5% 0 0 5%;
 }
 
+/* REALTOR INDEX */
+.realtor-display {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 300px;
+    margin: 5%;
+    cursor: pointer;
+}
+
+
+
+/* REALTOR SHOW */
 .realtor-img-box {
     width: 45vw;
     position: absolute;
     left: 27.5vw;
-}
-
-.realtor-img {
-    width: 100%;
-    height: auto;
-}
-
-.realtor-info {
-    position: absolute;
 }
 
 .realtors-listings {
@@ -97,29 +138,24 @@ img {
     right: 3.625vw;
 }
 
-.blog {
+
+.realtor-img {
+    width: 100%;
+    height: auto;
+}
+
+.realtor-info {
     position: absolute;
-    bottom: 25%;
-    right: 14%;
 }
 
-.landing-picture {
-    width: 400px;
-    height: 300px
-}
 
-.address {
-    padding: 3%;
-}
 
-.footer {
-    display: flex;
-    justify-content: space-between;
-    background:  #9cada4;
-}
 
-.form-screen {
-    width: 50%;
-    border: 1px solid black;
-    margin: 0 auto;
-}
+
+
+
+
+
+
+
+
