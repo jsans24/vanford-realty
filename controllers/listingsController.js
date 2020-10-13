@@ -24,6 +24,8 @@ const upload = multer({storage: storage}).single('img');
 router.get('/', ensureAuthenticated, (req, res) => {
     db.House.find({}, (err, houseListings) => {
         if(err) return console.log(err);
+
+        console.log(req.user.houses.address);
         
         db.Realtor.find({}, (err, realtors) => {
             if(err) return console.log(err);
@@ -118,23 +120,32 @@ router.get('/:id/edit', (req, res) => {
 
 //put route - Complete
 router.put('/:id', (req, res) => {
-    db.Realtor.findOne({'houses': req.params.id}, (err, realtor) => {
+    db.Realtor.findOne({houses: req.params.id}, (err, realtor) => {
         if(err) return console.log(err);
 
         realtor.houses.remove(req.params.id);
         realtor.save((err) => {
             if(err) return console.log(err);
-            res.redirect('/listings');
         });
+        
+        db.House.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {new: true},
+            (err, editedListing) => {
+                if(err) return console.log(err);
+                
+                db.Realtor.findById(req.body.realtor, (err, realtor) => {
+                    if(err) return console.log(err);
+            
+                    realtor.houses.push(req.params.id);
+                    realtor.save((err) => {
+                        if(err) return console.log(err);
+                        res.redirect('/listings')
+                    });
+            });
     });
-    db.House.findByIdAndUpdate(
-        req.params.id,
-        req.body,
-        {new: true},
-        (err, editedListing) => {
-            if(err) return console.log(err);
-            res.redirect(`/listings/`)
-        });
+});
 });
 
 module.exports = router;

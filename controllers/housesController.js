@@ -35,13 +35,13 @@ router.get('/search', (req, res) => {
 
 //show route - Complete
 router.get('/:id', (req, res) => {
-    db.House.findById(req.params.id, (err, listing) =>{
+    db.House.findById(req.params.id, (err, listing) => {
         if(err) return console.log(err);
 
-        console.log(listing);
+        
 
         res.render('houses/show', {
-            listing, listingm,
+            listing: listing,
             user: req.user,
         })
     });
