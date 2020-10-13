@@ -14,8 +14,9 @@ const realtorSchema = new mongoose.Schema({
   address: String,
   houses: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Article',
+    ref: 'House',
   }],
+  img: String
 });
 
 const Realtor = mongoose.model('Realtor', realtorSchema);

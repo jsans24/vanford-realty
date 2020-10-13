@@ -11,18 +11,33 @@ ul {
     list-style-type: none;
 }
 
+section {
+    margin: 2% 0;
+}
+
+.navbar {
+    min-height: 80px;
+}
+
+.landing-page {
+    display: flex;
+    justify-content: space-between;
+}
+
 .new-listing {
     margin: 20px 0 20px 0;
 }
 
 /* https://stackoverflow.com/questions/22592064/how-to-align-text-below-an-image-in-css/22592136 */
-div.house-display {
+.house-display {
     vertical-align: top;
     display: inline-block;
     text-align: center;
     width: 300px;
-    margin: 5%
+    margin: 5%;
+    cursor: pointer;
 }
+
 img {
     width: 300px;
     height: 200px;
@@ -41,4 +56,26 @@ img {
 
 .show-realtor {
     margin: 5% 0 0 5%;
+}
+
+.blog {
+    position: absolute;
+    bottom: 25%;
+    right: 14%;
+}
+
+.landing-picture {
+    width: 400px;
+    height: 300px
+}
+
+.address {
+    padding: 3%;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    background:  #9cada4;
+
 }
