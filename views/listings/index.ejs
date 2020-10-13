@@ -5,6 +5,7 @@
 </head>
 <body>
     <%- include('../partials/nav.ejs') %>
+    <div class='container'>
 
     
     <h1>Welcome <%= user.name %>!</h1>
@@ -44,5 +45,6 @@
     <div>
         <button><a href='/logout'>Logout</a></button>
     </div>
+    <%- include('../partials/footer.ejs') %>
 </body>
 </html>

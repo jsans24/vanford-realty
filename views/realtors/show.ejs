@@ -34,7 +34,7 @@
         <figure class="realtors-listings" onclick="location.href='/houses/<%= house._id %>'">
           <img src="/uploads/<%= house.img %>" alt="house">
           <figcaption>
-            <ul class="house-listing">
+            <ul>
               <li><%= house.address %></li>
               <li><%= house.city %></li>
               <% const price = (house.price) %>
@@ -45,5 +45,7 @@
       <% }); %>
   </div>
 </section>
+
+<%- include('../partials/footer.ejs') %>
 </body>
 </html>
