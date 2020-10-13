@@ -4,5 +4,6 @@ module.exports = {
   listings: require('./listingsController'),
   landing: require('./landingController'),
   register: require('./registerController'),
-  login: require('./loginController')
+  login: require('./loginController'),
+  logout: require('./logoutController')
 };

@@ -6,7 +6,9 @@
 <body>
     <%- include('../partials/nav.ejs') %>
 
-    <h1>Welcome!</h1>
+    <% realtors.forEach(realtor => { %>
+    <h1>Welcome <%=realtor.name %>!</h1>
+    <% }) %>
     <h3>What Would You Like to Do?</h3>
     <div class="new-listing">
         <button><a href='/listings/new'>Add a New Listing</a></button>
@@ -38,7 +40,7 @@
     <% }) %>
     
     <div>
-        <button><a href='/'>Logout</a></button>
+        <button><a href='/logout'>Logout</a></button>
     </div>
 </body>
 </html>
