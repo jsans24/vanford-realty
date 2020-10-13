@@ -45,11 +45,13 @@ router.post('/', (req, res) => {
                     bcrypt.genSalt(10, (err, salt) => {
                         if(err) console.log(err)
                         bcrypt.hash(newRealtor.password, salt, (err, hash) => {
-                            if(err) console.log(err)              
+                            if(err) return console.log(err)              
                             newRealtor.password = hash;
 
                             newRealtor.save()
                             .then(user => {
+                                req.flash('success_msg', `You are now registered and 
+                                can log in`)
                                 res.redirect('/login')
                             })
                             .catch(err => console.log(err))
