@@ -101,7 +101,7 @@ router.delete('/:id', (req, res) => {
 router.get('/:id/edit', (req, res) => {
     db.House.findById(req.params.id, (err, listingForEdit) =>{
         if(err) return console.log(err);
-        
+
         db.Realtor.find({}, (err, allRealtors) => {
             if (err) console.log(err);
 
@@ -121,6 +121,9 @@ router.put('/:id', (req, res) => {
         {new: true},
         (err, editedListing) => {
             if(err) return console.log(err);
+
+            console.log(req.body);
+
             res.redirect(`/listings/`)
         });
 });

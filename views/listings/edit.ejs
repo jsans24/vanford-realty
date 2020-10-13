@@ -7,8 +7,8 @@
     <h1>Edit A House Listing</h1>
     <form action='/listings/<%= listing._id%>?_method=PUT' method='POST'>
       <div class='form-group col-md-4'>
-        <label for='realtor'>Lising Realtor:</label>
-        <select class='form-control' id='realtor'>
+        <label for='realtor'>Listing Realtor:</label>
+        <select class='form-control' id='realtor' name="realtor">
           <% realtors.forEach(realtor => { %>
           <option value='<%= realtor._id %>'><%= realtor.name %></option>
           <% }) %> 
