@@ -29,7 +29,7 @@ router.get('/', ensureAuthenticated, (req, res) => {
             if(err) return console.log(err);
             res.render('listings/index', {
                 listings: houseListings,
-                realtors: realtors
+                currentUser: req.user
             })
         })
     });

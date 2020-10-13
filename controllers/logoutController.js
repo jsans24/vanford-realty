@@ -5,6 +5,7 @@ const db = require('../models');
 
 router.get('/', (req, res) => {
     req.logout();
+    req.user=null;
     req.flash('success_msg', 'You are logged out');
     res.redirect('/login');
 });

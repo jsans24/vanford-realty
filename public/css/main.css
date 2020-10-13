@@ -116,5 +116,10 @@ img {
     display: flex;
     justify-content: space-between;
     background:  #9cada4;
+}
 
+.form-screen {
+    width: 50%;
+    border: 1px solid black;
+    margin: 0 auto;
 }
