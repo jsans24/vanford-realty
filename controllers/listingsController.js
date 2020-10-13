@@ -55,11 +55,14 @@ router.post('/', (req, res) => {
             bathrooms: req.body.bathrooms,
             size: req.body.size,
             type: req.body.type,
-            img: req.file.filename
+            realtor: req.body.realtor,
+            img: req.file.filename,
             };
 
         db.House.create(obj, (err, newListing) => {
             if(err) return console.log(err);
+
+            console.log(newListing);
     
             db.Realtor.findById(req.body.realtor, (err, realtor) => {
                 if(err) return console.log(err);

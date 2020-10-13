@@ -37,6 +37,14 @@ section {
     margin: 5%;
     cursor: pointer;
 }
+.realtor-display {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 300px;
+    margin: 5%;
+    cursor: pointer;
+}
 
 img {
     width: 300px;
@@ -58,6 +66,35 @@ img {
     margin: 5% 0 0 5%;
 }
 
+.realtor-img-box {
+    width: 45vw;
+    position: absolute;
+    left: 27.5vw;
+}
+
+.realtor-img {
+    width: 100%;
+    height: auto;
+}
+
+.realtor-info {
+    position: absolute;
+}
+
+.realtors-listings {
+    text-align: center;
+    width: 18vw;
+    margin: 5%;
+    cursor: pointer;
+}
+
+.listing-box{
+    overflow-x: hidden; 
+    overflow-y: auto; 
+    height: 75vh;
+    width: 20vw;
+    position: absolute;
+    right: 3.625vw;
 .blog {
     position: absolute;
     bottom: 25%;

@@ -12,6 +12,7 @@ const realtorSchema = new mongoose.Schema({
     minlength: 20,
   },
   address: String,
+  img: String,
   houses: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'House',
