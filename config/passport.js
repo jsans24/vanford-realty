@@ -1,16 +1,16 @@
+const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const db = require('../models');
-const { Realtor } = require('../models');
 
 module.exports = function(passport) {
     passport.use(
         new LocalStrategy({usernameField: 'email'}, (email, password, done) => {
             // ----- MATCH USER ----- //
-            db.Realtor.findOne({email: email}, (err, user) => {
-                if(err) return console.log(err)
+            db.Realtor.findOne({email: email}) 
+                .then(user => {
                 if (!user) {
                     return done(null, false, {message: `That email is not 
                     registered`});
@@ -19,13 +19,23 @@ module.exports = function(passport) {
                 bcrypt.compare(password, user.password, (err, isMatch) => {
                     if(err) return console.log(err)
                     if (isMatch) {
-                        return done(null, user)
+                        return done(null, user);
                     } else {
                         return done(null, false, {message: `Password incorrect`})
                     }
                 });
             })
+            .catch(err => console.log(err));
         })
     );
-    
+    passport.serializeUser((user, done) => {
+        done(null, user._id)
+    });
+
+    passport.deserializeUser((_id, done) => {
+        db.Realtor.findById(_id, (err, user) => {
+            if(err) return console.log(err)
+            done(err, user)
+        });
+    });
 }

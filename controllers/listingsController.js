@@ -4,6 +4,7 @@ const db = require('../models');
 const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
+const {ensureAuthenticated} = require('../config/auth')
 
 //multer middleware
 //https://www.geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/
@@ -20,7 +21,7 @@ const upload = multer({storage: storage}).single('img');
 
 
 //index route - Complete
-router.get('/', (req, res) => {
+router.get('/', ensureAuthenticated, (req, res) => {
     db.House.find({}, (err, houseListings) => {
         if(err) return console.log(err);
         
