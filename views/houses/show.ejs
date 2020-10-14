@@ -5,21 +5,24 @@
 </head>
 <body>
     <%- include('../partials/nav.ejs') %>
-
-    <h2> <%=listing.address%> </h2>
-    <h3> <%=listing.city %></h3>
-    <% const price = (listing.price) %>
-    <h4><%= '$' + price.toFixed(0) %></h4>
+    <div id="show-page-intro">
+        <h2> <%=listing.address%> </h2>
+        <h3> <%=listing.city %></h3>
+        <% const price = (listing.price) %>
+        <h4><%= '$' + price.toFixed(0) %></h4>
+    </div>
+    
 
     <p class='show-realtor'>MEET THE REALTOR</p>
 
     <div class='show-page'>
         <div class='realtor'>
             <img src='https://loremflickr.com/320/240'/>
+            <%= realtor.name %>
         </div>
     
         <div class='show-house'>
-            <img src='/uploads/<%= listing.img %>' alt='house-id#-<%=listing._id%>'>
+            <img id='show-image' src='/uploads/<%= listing.img %>' alt='house-id#-<%=listing._id%>'>
             <div>
                 <p>Property Details:</p>
                 <ul>
@@ -28,6 +31,10 @@
                     <li>Bathrooms: <%=listing.bathrooms%> </li>
                 </ul>
             </div>
+        </div>
+
+        <div class='white-space'>
+
         </div>
     </div>
     

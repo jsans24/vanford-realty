@@ -12,7 +12,7 @@ require('dotenv').config();
 // ----- PASSPORT CONFIG ----- //
 require('./config/passport')(passport);
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 const db = require('./models');
 
@@ -56,6 +56,7 @@ app.use((req,res, next) => {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
+    res.locals.user = req.user;
     next();
 })
 
