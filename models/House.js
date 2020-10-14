@@ -4,10 +4,6 @@ const houseSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    city: {
-        type: String,
-        required: true,
-    },
     price: {
         type: Number,
         required: true,
@@ -19,7 +15,11 @@ const houseSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Realtor'
     },
-    img: String
+    img: String,
+    city: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'City'
+    }
 });
 
 const House = mongoose.model('House', houseSchema);

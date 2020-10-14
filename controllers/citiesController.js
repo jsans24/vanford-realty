@@ -34,7 +34,11 @@ router.get('/new', (req, res) => {
 router.get('/:id', (req, res) => {
     db.City.findById(req.params.id, (err, city) =>{
         if(err) return console.log(err);
-        res.render('cities/show', {city, user: req.user})
+
+        db.House.find({city: city}, (err, localListings) => {
+            console.log(localListings);
+            res.render('cities/show', {city, user: req.user, listings: localListings})
+        })
     });
 });
 
@@ -72,7 +76,7 @@ router.post('/', (req, res) => {
 
 //edit route
 router.get('/:id/edit', (req, res) => {
-    db.City.findById(req.params.rid, (err, cityToEdit) => {
+    db.City.findById(req.params.id, (err, cityToEdit) => {
         if (err) console.log(err);
 
         res.render('cities/edit', {cityToEdit,
@@ -92,7 +96,6 @@ router.put('/:id', (req, res) => {
         const obj = {
             name: req.body.name,
             population: req.body.population,
-            keyAttractions: req.body.keyAttractions,
             houses: req.body.houses,
             bio: req.body.bio,
             img: req.file.filename,
@@ -100,25 +103,46 @@ router.put('/:id', (req, res) => {
 
         db.City.findByIdAndUpdate(
             req.params.id,
-            obj,
+            {$push: {keyAttractions: req.body.keyAttractions}},
             {new: true},
             (err, updatedCity) => {
             if (err) console.log(err);
         
-            res.redirect(`/cities/${updatedCity._id}`);
+            db.City.findByIdAndUpdate(
+                req.params.id,
+                obj,
+                {new: true},
+                (err, updatedCity) => {
+                if (err) console.log(err);
+                
+                res.redirect(`/cities/${updatedCity._id}`);
+            });
         });
         } else {
+            const obj = {
+                name: req.body.name,
+                population: req.body.population,
+                houses: req.body.houses,
+                bio: req.body.bio,
+            };
             db.City.findByIdAndUpdate(
             req.params.id,
-            req.body,
+            {$push: {keyAttractions: req.body.keyAttractions}},
             {new: true},
             (err, updatedCity) => {
             if (err) console.log(err);
-        
-            res.redirect(`/cities/${updatedCity._id}`);
+
+                db.City.findByIdAndUpdate(
+                    req.params.id,
+                    obj,
+                    {new: true},
+                    (err, updatedCity) => {
+                    if (err) console.log(err);
+                    
+                    res.redirect(`/cities/${updatedCity._id}`);
+                });
             });
         };
     });
 });
-
 module.exports = router;

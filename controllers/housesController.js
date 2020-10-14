@@ -6,8 +6,15 @@ const db = require('../models');
 router.get('/', (req, res) => {
     db.House.find({}, (err, houseListings) => {
         if(err) return console.log(err);
-        res.render('houses/index', {listings: houseListings,
-            user: req.user,})
+        db.City.find({}, (err, allCities) => {
+            if(err) return console.log(err);
+
+            res.render('houses/index', {
+                listings: houseListings,
+                cities: allCities,
+                user: req.user,
+            })
+        })
     });
 });
 
@@ -20,10 +27,10 @@ router.get('/search', (req, res) => {
     let bedrooms = split2[2][1]
     let bathrooms = split2[3][1]
 
-    if (min_price !== NaN) min_price = 0;
-    if (isNaN(max_price)) max_price = 999999999999;
-    if (bedrooms !== NaN) bedrooms = 0;
-    if (bathrooms !== NaN) bathrooms = 0;
+    if (min_price <= 0) min_price = 0;
+    if (max_price <= 0) max_price = 999999999999;
+    if (bedrooms <= 0) bedrooms = 0;
+    if (bathrooms <= 0) bathrooms = 0;
     db.House.find({
         price: {
             $gte: min_price,
@@ -46,11 +53,16 @@ router.get('/:id', (req, res) => {
         console.log(listing);
         db.Realtor.findById(listing.realtor, (err, realtor) => {
             if(err) return console.log(err);
-
-            res.render('houses/show', {
-                listing: listing,
-                user: req.user,
-                realtor: realtor
+            
+            db.City.findById(listing.city, (err, city) => {
+                if(err) return console.log(err);
+                
+                res.render('houses/show', {
+                    listing: listing,
+                    user: req.user,
+                    realtor: realtor,
+                    city: city,
+                })
             })
         })
 

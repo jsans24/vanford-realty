@@ -25,7 +25,11 @@
                 <% if (user.houses.includes(listings[i]._id)) { %>
                     <ul class='house-listing'>
                         <li><%= listings[i].address %></li>
-                        <li><%= listings[i].city %></li>
+                        <li><% cities.forEach(city => { %>
+                            <% if (listings[i].city == city._id.toString()) { %>
+                                <%= city.name %>
+                            <% } %>
+                        <% }) %></li>
                         <% const price = (listings[i].price) %>
                         <li><%= '$' + price.toFixed(0) %></li>
                     </ul>
