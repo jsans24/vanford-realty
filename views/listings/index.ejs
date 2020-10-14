@@ -8,16 +8,16 @@
     <div class='container'>
 
     
-    <h1>Welcome <%= user.name %>!</h1>
-    <h3>What Would You Like to Do?</h3>
-    <div class="new-listing">
-        <button><a href='/listings/new'>Add a New Listing</a></button>
-    </div>
-    <div class="new-city">
-        <button><a href='/cities/new'>Add a New Listing</a></button>
-    </div>
+        <h1>Welcome <%= user.name %>!</h1>
+        <h3>What Would You Like to Do?</h3>
+        <div class="new-listing">
+            <button><a href='/listings/new'>Add a New Listing</a></button>
+        </div>
+        <div class="new-city">
+            <button><a href='/cities/new'>Add a City</a></button>
+        </div>
     
-    <% for (let i = 0; i < listings.length; i++) { %>
+        <% for (let i = 0; i < listings.length; i++) { %>
         <% if (user.houses.includes(listings[i]._id)) { %>
             <ul class="house-listing">
                 <li><%= listings[i].address %></li>
@@ -34,19 +34,20 @@
             <input type='submit' value='Edit Listing'>
         </form>
         <% }%>
-    <% } %>
-    <% realtors.forEach(realtor => { %>
+        <% } %>
+        <% realtors.forEach(realtor => { %>
         <form action='/realtors/<%= realtor._id %>?_method=DELETE' method='POST'>
             <input type='submit' value='Remove <%=realtor.name%>'>
         </form>
     
-    <form action='/realtors/<%= realtor._id %>/edit' method='GET'>
-        <input type='submit' value='Edit <%=realtor.name%>'>
-    </form>
-    <% }) %>
+        <form action='/realtors/<%= realtor._id %>/edit' method='GET'>
+            <input type='submit' value='Edit <%=realtor.name%>'>
+        </form>
+        <% }) %>
     
-    <div>
-        <button><a href='/logout'>Logout</a></button>
+        <div>
+            <button><a href='/logout'>Logout</a></button>
+        </div>
     </div>
     <%- include('../partials/footer.ejs') %>
 </body>
