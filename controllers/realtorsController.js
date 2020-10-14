@@ -33,6 +33,7 @@ router.get('/new', (req, res) => {
   res.render('realtors/new', {user: req.user,})
 });
 
+//show page
 router.get('/:realtorId', (req, res) => {
   db.Realtor.findById(req.params.realtorId).populate('houses').exec((err, foundRealtor) => {
     if (err) console.log(err);
@@ -65,7 +66,7 @@ router.put('/:realtorId', (req, res) => {
 
     console.log(req.body);
     
-      if (req.file) {
+      if (req.file.filename) {
         const obj = {
           address: req.body.address,
           name: req.body.name,
@@ -82,7 +83,7 @@ router.put('/:realtorId', (req, res) => {
           (err, updatedRealtor) => {
           if (err) console.log(err);
       
-          res.redirect(`/realtors/${updatedRealtor._id}`);
+          res.redirect(`/realtors/`);
         });
       } else {
         db.Realtor.findByIdAndUpdate(
@@ -92,7 +93,7 @@ router.put('/:realtorId', (req, res) => {
           (err, updatedRealtor) => {
           if (err) console.log(err);
       
-          res.redirect(`/realtors/${updatedRealtor._id}`);
+          res.redirect(`/realtors/`);
         });
       };
   });

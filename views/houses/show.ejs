@@ -17,8 +17,11 @@
 
     <div class='show-page'>
         <div class='realtor'>
-            <img src='https://loremflickr.com/320/240'/>
-            <%= realtor.name %>
+            <img class='realtor-image' src='/uploads/<%= realtor.img %>' alt='realtor-id#-<%=realtor._id%>'/>
+            <p><%= realtor.name %></p>
+            <p><%= realtor.phone %></p>
+            <p><a href='/realtors/<%=realtor.id%>'>Realtor's Profile</a></p>
+
         </div>
     
         <div class='show-house'>

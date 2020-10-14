@@ -13,7 +13,9 @@
             <div class='house-billboard'>
                 <h5 class='listing'>Listing of the Day</h5>
                 <% if (house) { %>
-                <img class="landing-picture" src='<%=house.img %>'>
+                <div class='landing-images' onclick="location.href = '/houses/<%=house._id%>'">
+                    <img class="landing-picture" src='<%=house.img %>'>
+                </div>
                 <h4 class='listing'><%= house.address %></h4>
                 <h5 class='listing'><%= house.city %></h5>
                 <% const price = (house.price) %>
@@ -21,10 +23,13 @@
                 <% } %>
             </div>
             <div class='realtor-month'>
-                <h5>Realtor of the Month</h5>
+                <h5 class='listing'>Realtor of the Month</h5>
                 <% if(realtor) { %>
-                <img src='<%=realtor.img %>'>
-                <h6><%= realtor.name %></h6>
+                    <div class='landing-images' onclick="location.href = '/realtors/<%= realtor._id %>'">
+                        <img class='realtor-image' src='/uploads/<%= realtor.img %>' alt='realtor-id#-<%=realtor._id%>'/>
+                    </div>
+                    
+                <h6 class='listing'><%= realtor.name %></h6>
                 <% } %>    
             </div>
         </div>

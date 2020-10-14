@@ -75,6 +75,10 @@ section {
     text-align: center;
 }
 
+.landing-images {
+    cursor: pointer;
+}
+
 /* LISTINGS INDEX */
 .new-listing, .new-city {
     margin: 20px 0 20px 0;
@@ -169,6 +173,12 @@ img {
     border: 1px solid grey;
 }
 
+.realtor-image {
+    width: 250px;
+    height: 250px;
+    box-shadow: 1px grey;
+}
+
 /* REALTOR INDEX */
 .realtor-display {
     vertical-align: top;
@@ -182,11 +192,6 @@ img {
 
 
 /* REALTOR SHOW */
-.realtor-img-box {
-    width: 45vw;
-    position: absolute;
-    left: 27.5vw;
-}
 
 .realtors-listings {
     text-align: center;
