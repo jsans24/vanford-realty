@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/header.ejs') %>
+</head>
+<body>
+    <%- include('../partials/nav.ejs') %>
+
+    <h1>Realtor Blogs</h1>
+    <% for( let i = page * 5 - 1; i > page * 5 - 6; i--) { %>
+      <% if (blogs[i]) { %>
+        <div onclick="location.href='/blogs/<%= blogs[i]._id %>'">
+          <%= blogs[i].title %>
+          <%= blogs[i].synopsis %>
+          <%= blogs[i].publishDate.toLocaleString('en-US', {timeZone: "UTC", day: "2-digit", month: "short", year: "numeric"}) %>
+        </div>
+      <% } %>
+    <% } %>
+
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>

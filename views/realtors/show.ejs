@@ -28,7 +28,7 @@
         <% } %>
         <li><i class="far fa-envelope"></i> <a href="mailto:<%= realtor.email %>"><%= realtor.email %></a></li>
         <% if (address) { %>
-          <li><a href="http://maps.google.com/maps?q=<%= address[0] %>+<%= address[1] %>+<%= address[2] %>,+<%= realtor.city %>"></a><%= realtor.address %></li>
+          <li><a href="http://maps.google.com/maps?q=<%= address[0] %>+<%= address[1] %>+<%= address[2] %>"><%= realtor.address %></a></li>
         <% } %> 
       </ul>
     </div>

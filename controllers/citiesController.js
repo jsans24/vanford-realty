@@ -69,6 +69,7 @@ router.post('/', (req, res) => {
             if(err) return console.log(err);
 
             console.log(newCity);
+            res.redirect('/listings')
         });
     })
 });
@@ -77,7 +78,6 @@ router.post('/', (req, res) => {
 router.get('/:id/edit', (req, res) => {
     db.City.findById(req.params.id, (err, cityToEdit) => {
         if (err) console.log(err);
-
         res.render('cities/edit', {cityToEdit,
             user: req.user,});
     });

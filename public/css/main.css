@@ -162,9 +162,9 @@ img {
 }
 
 .realtor-image {
-    width: 250px;
-    height: 250px;
-    border-radius: 25%;
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
 }
 
 .about-house {
@@ -192,9 +192,13 @@ img {
     vertical-align: top;
     display: inline-block;
     text-align: center;
-    width: 300px;
+    align-items: center;
+    width: 250px;
     margin: 5%;
     cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+
 }
 
 

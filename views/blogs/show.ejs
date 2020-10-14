@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/header.ejs') %>
+</head>
+<body>
+    <%- include('../partials/nav.ejs') %>
+    <div class='container'>
+        <h2> <%=city.name%> </h2>
+        
+                    <h4>About <%=city.name %>:</h4>
+                    <h6>Population: <%=city.population%> </h6>
+                    <h6>Top Attractions:</h6>
+                    <ul id='attractions'>
+                        <% city.keyAttractions.forEach(attraction => { %>
+                            <li><%= attraction %> </li>
+                        <% }) %>
+                    </ul>
+                    <p>Bio: <%=city.bio%> </p>
+                </div>
+            </div>
+    </div>
+    <div class="city-listing-box">
+            <% listings.forEach(house => { %>
+                <figure class="city's-listings" onclick="location.href='/houses/<%= house._id %>'">
+                    <img src="/uploads/<%= house.img %>" alt="house">
+                    <figcaption>
+                        <ul>
+                            <li><%= house.address %></li>
+                            <% const price = (house.price) %>
+                            <%= '$' + price.toFixed(0) %>
+                        </ul>
+                    </figcaption>
+                </figure>
+            <% }); %>
+        </div>
+    
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>
