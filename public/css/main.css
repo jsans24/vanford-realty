@@ -162,9 +162,10 @@ img {
 }
 
 .realtor-image {
-    width: 250px;
-    height: 250px;
-    border-radius: 25%;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%;
 }
 
 .about-house {
@@ -189,11 +190,12 @@ img {
 
 /* REALTOR INDEX */
 .realtor-display {
-    vertical-align: top;
     display: inline-block;
+    padding: 20px 30px;
+    margin-left: 3%;
+    box-sizing: border-box;
+    width: 250px; height: 250px;
     text-align: center;
-    width: 300px;
-    margin: 5%;
     cursor: pointer;
 }
 
@@ -217,12 +219,6 @@ img {
     right: 3.625vw;
 }
 
-
-.realtor-img {
-    width: 100%;
-    height: auto;
-}
-
 .realtor-info {
     width: 30%
 }
@@ -231,6 +227,11 @@ img {
 
 .properties-box {
     overflow: scroll;
+}
+
+.realtor-show {
+    width: 250px;
+    height: auto;
 }
 
 
