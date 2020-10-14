@@ -11,17 +11,26 @@
         <% const price = (listing.price) %>
         <h4><%= '$' + price.toFixed(0) %></h4>
     </div>
-    
+    <div class='container'>
+    <% if (realtor.phone) var phoneNumber = realtor.phone.toString().split('') %>
 
     <p class='show-realtor'>MEET THE REALTOR</p>
 
     <div class='show-page'>
         <div class='realtor'>
             <img class='realtor-image' src='/uploads/<%= realtor.img %>' alt='realtor-id#-<%=realtor._id%>'/>
-            <p><%= realtor.name %></p>
-            <p><%= realtor.phone %></p>
-            <p><a href='/realtors/<%=realtor.id%>'>Realtor's Profile</a></p>
-
+            <ul>
+                <ul><%= realtor.name %></ul>
+                <% if (phoneNumber) { %>
+                <ul>
+                    (<%= phoneNumber[0]%><%=phoneNumber[1]%><%=phoneNumber[2]%>)
+                    <%= phoneNumber[3]%><%= phoneNumber[4]%><%= phoneNumber[5]%> - 
+                    <%= phoneNumber[6]%><%= phoneNumber[7]%><%= phoneNumber[8]%><%= phoneNumber[9]%>
+                </ul>
+                <% } %>
+                <ul><a href='/realtors/<%=realtor.id%>'>Realtor's Profile</a></ul>
+            </ul>
+            
         </div>
     
         <div class='show-house'>
@@ -40,7 +49,7 @@
 
         </div>
     </div>
-    
+    </div>
     <%- include('../partials/footer.ejs') %>
 </body>
 </html>

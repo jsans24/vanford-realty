@@ -66,7 +66,7 @@ router.put('/:realtorId', (req, res) => {
 
     console.log(req.body);
     
-      if (req.file.filename) {
+      if (req.file) {
         const obj = {
           address: req.body.address,
           name: req.body.name,
@@ -83,7 +83,7 @@ router.put('/:realtorId', (req, res) => {
           (err, updatedRealtor) => {
           if (err) console.log(err);
       
-          res.redirect(`/realtors/`);
+          res.redirect(`/realtors/${req.params.realtorId}`);
         });
       } else {
         db.Realtor.findByIdAndUpdate(
@@ -93,7 +93,7 @@ router.put('/:realtorId', (req, res) => {
           (err, updatedRealtor) => {
           if (err) console.log(err);
       
-          res.redirect(`/realtors/`);
+          res.redirect(`/realtors/${req.params.realtorId}`);
         });
       };
   });
