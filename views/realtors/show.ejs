@@ -4,48 +4,53 @@
   <%- include("../partials/header.ejs") %>
 </head>
 <body>
-  <% if (realtor.phone) var phoneNumber = realtor.phone.toString().split('') %>
-  <% if (realtor.address) var address = realtor.address.split(' ') %>
   <%- include('../partials/nav.ejs') %>
-  <h1><%= realtor.name %></h1>
-<section class="realtor-page">
-  <div class="realtor-info">
-    <ul>
-      <% if (phoneNumber) { %>
-        <li><a href="tel:<%= realtor.phone %>">
-          (<%= phoneNumber[0]%><%=phoneNumber[1]%><%=phoneNumber[2]%>)
-          <%= phoneNumber[3]%><%= phoneNumber[4]%><%= phoneNumber[5]%> - 
-          <%= phoneNumber[6]%><%= phoneNumber[7]%><%= phoneNumber[8]%><%= phoneNumber[9]%>
-        </a></li>
-      <% } %>
-      <li><a href="mailto:<%= realtor.email %>"><%= realtor.email %></a></li>
-      <% if (address) { %>
-        <li><a href="http://maps.google.com/maps?q=<%= address[0] %>+<%= address[1] %>+<%= address[2] %>,+<%= realtor.city %>"></a><%= realtor.address %></li>
-      <% } %> 
-    </ul>
-  </div>
-  <figure class="realtor-img-box">
-    <img src="/uploads/<%= realtor.img %>"  class="realtor-img" alt="<%= realtor.name %>">
-    <figcaption class="realtor-bio"><%= realtor.bio %> </figcaption>
-  </figure>
+  <div class='container'>
+    <% if (realtor.phone) var phoneNumber = realtor.phone.toString().split('') %>
+    <% if (realtor.address) var address = realtor.address.split(' ') %>
 
-  <div class="listing-box">
-      <% houses.forEach(house => { %>
-        <figure class="realtors-listings" onclick="location.href='/houses/<%= house._id %>'">
-          <img src="/uploads/<%= house.img %>" alt="house">
-          <figcaption>
-            <ul>
-              <li><%= house.address %></li>
-              <li><%= house.city %></li>
-              <% const price = (house.price) %>
-              <%= '$' + price.toFixed(0) %>
-            </ul>
-          </figcaption>
-        </figure>
-      <% }); %>
+    <h1><%= realtor.name %></h1>
+  <div class="show-page">
+    <div class="realtor-info">
+      <h4><%= realtor.name %>'s Bio:</h4>
+      <figcaption class="realtor-bio"><%= realtor.bio %> </figcaption>
+    </div>
+    <div class="realtor-img-box">
+      <img src="/uploads/<%= realtor.img %>"  class="realtor-image" alt="<%= realtor.name %>">
+      
+      <ul>
+        <% if (phoneNumber) { %>
+          <li><i class="fas fa-phone"></i> <a href="tel:<%= realtor.phone %>">
+            (<%= phoneNumber[0]%><%=phoneNumber[1]%><%=phoneNumber[2]%>)
+            <%= phoneNumber[3]%><%= phoneNumber[4]%><%= phoneNumber[5]%> - 
+            <%= phoneNumber[6]%><%= phoneNumber[7]%><%= phoneNumber[8]%><%= phoneNumber[9]%>
+          </a></li>
+        <% } %>
+        <li><i class="far fa-envelope"></i> <a href="mailto:<%= realtor.email %>"><%= realtor.email %></a></li>
+        <% if (address) { %>
+          <li><a href="http://maps.google.com/maps?q=<%= address[0] %>+<%= address[1] %>+<%= address[2] %>,+<%= realtor.city %>"></a><%= realtor.address %></li>
+        <% } %> 
+      </ul>
+    </div>
+  
+    <div class="listing-box properties-box">
+      <h5 class='col text-center'>NEWEST LISTINGS</h5>
+        <% houses.forEach(house => { %>
+          <figure class="realtors-listings" onclick="location.href='/houses/<%= house._id %>'">
+            <img src="/uploads/<%= house.img %>" alt="house">
+            <figcaption>
+              <ul>
+                <li><%= house.address %></li>
+                <li><%= house.city %></li>
+                <% const price = (house.price) %>
+                <%= '$' + price.toFixed(0) %>
+              </ul>
+            </figcaption>
+          </figure>
+        <% }); %>
+    </div>
   </div>
-</section>
-
+  </div>
 <%- include('../partials/footer.ejs') %>
 </body>
 </html>

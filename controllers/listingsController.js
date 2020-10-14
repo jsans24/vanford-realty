@@ -61,6 +61,7 @@ router.post('/', (req, res) => {
             size: req.body.size,
             type: req.body.type,
             realtor: req.body.realtor,
+            about: req.body.about,
             img: req.file.filename,
         };
 
