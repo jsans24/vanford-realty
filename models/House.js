@@ -11,6 +11,7 @@ const houseSchema = new mongoose.Schema({
     bedrooms: Number,
     bathrooms: Number,
     size: Number,
+    about: String,
     realtor: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Realtor'

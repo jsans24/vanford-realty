@@ -16,7 +16,6 @@ const realtorSchema = new mongoose.Schema({
   },
   bio: {
     type: String,
-    minlength: 20,
   },
   address: String,
   img: String,

@@ -50,7 +50,7 @@ router.get('/search', (req, res) => {
 router.get('/:id', (req, res) => {
     db.House.findById(req.params.id, (err, listing) => {
         if(err) return console.log(err);
-        console.log(listing);
+
         db.Realtor.findById(listing.realtor, (err, realtor) => {
             if(err) return console.log(err);
             
