@@ -143,6 +143,7 @@ img {
 }
 
 /* HOUSES SHOW */
+
 .show-page {
     display: flex;
     justify-content: space-between;
@@ -157,8 +158,15 @@ img {
 }
 
 #show-image {
-    width: 500px;
-    height: 400px
+    width: 700px;
+    height: 500px;
+    border: 10px solid #797a7e 
+
+}
+
+#show-page-intro {
+    background: #f6f5f5;
+    border: 1px solid grey;
 }
 
 /* REALTOR INDEX */

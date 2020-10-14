@@ -5,11 +5,13 @@
 </head>
 <body>
     <%- include('../partials/nav.ejs') %>
-
-    <h2> <%=listing.address%> </h2>
-    <h3> <%=listing.city %></h3>
-    <% const price = (listing.price) %>
-    <h4><%= '$' + price.toFixed(0) %></h4>
+    <div id="show-page-intro">
+        <h2> <%=listing.address%> </h2>
+        <h3> <%=listing.city %></h3>
+        <% const price = (listing.price) %>
+        <h4><%= '$' + price.toFixed(0) %></h4>
+    </div>
+    
 
     <p class='show-realtor'>MEET THE REALTOR</p>
 
