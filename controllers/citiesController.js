@@ -6,7 +6,7 @@ const db = require('../models');
 router.get('/', (req, res) => {
     db.City.find({}, (err, cities) => {
         if(err) return console.log(err);
-        res.render('cities/index', {cities})
+        res.render('cities/index', {cities, user: req.user})
     });
 });
 
@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     db.City.findById(req.params.id, (err, city) =>{
         if(err) return console.log(err);
-        res.render('cities/show', {city})
+        res.render('cities/show', {city, user: req.user})
     });
 });
 

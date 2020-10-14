@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const db = require('../models');
 
 // ----- REGISTER PAGE ----- //
-router.get('/', (req, res) => res.render('register'));
+router.get('/', (req, res) => res.render('register', {user: req.user}));
 
 
 // ----- REGISTER POST / NEW REALTOR ----- //

@@ -21,7 +21,7 @@ router.get('/search', (req, res) => {
     let bathrooms = split2[3][1]
 
     if (min_price !== NaN) min_price = 0;
-    if (max_price !== NaN) max_price = 999999999999;
+    if (isNaN(max_price)) max_price = 999999999999;
     if (bedrooms !== NaN) bedrooms = 0;
     if (bathrooms !== NaN) bathrooms = 0;
     db.House.find({
