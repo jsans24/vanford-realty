@@ -33,9 +33,7 @@ section {
 
 .social-media {
     padding: 3%;
-    margin: 1%;
-    display: flex;
-    flex-direction: column;
+    margin: 3%;
 }
 
 .follow-us {

@@ -13,6 +13,9 @@
     <div class="new-listing">
         <button><a href='/listings/new'>Add a New Listing</a></button>
     </div>
+    <div class="new-city">
+        <button><a href='/cities/new'>Add a New Listing</a></button>
+    </div>
     
     <% for (let i = 0; i < listings.length; i++) { %>
         <% if (user.houses.includes(listings[i]._id)) { %>
