@@ -36,7 +36,6 @@ router.get('/:id', (req, res) => {
         if(err) return console.log(err);
 
         db.House.find({city: city}, (err, localListings) => {
-            console.log(localListings);
             res.render('cities/show', {city, user: req.user, listings: localListings})
         })
     });
@@ -89,9 +88,6 @@ router.put('/:id', (req, res) => {
     upload(req, res, (err) => {
 
     if (err) return console.log(err);
-
-    console.log(req.body);
-    
         if (req.file) {
         const obj = {
             name: req.body.name,
@@ -127,22 +123,30 @@ router.put('/:id', (req, res) => {
             };
             db.City.findByIdAndUpdate(
             req.params.id,
-            {$push: {keyAttractions: req.body.keyAttractions}},
+            {$pull: {keyAttractions: req.body.keyAttractionsToDelete},},
             {new: true},
             (err, updatedCity) => {
             if (err) console.log(err);
-
                 db.City.findByIdAndUpdate(
-                    req.params.id,
-                    obj,
-                    {new: true},
-                    (err, updatedCity) => {
-                    if (err) console.log(err);
-                    
-                    res.redirect(`/cities/${updatedCity._id}`);
+                req.params.id,
+                {$push: {keyAttractions: req.body.keyAttractions},},
+                {new: true},
+                (err, updatedCity) => {
+                if (err) console.log(err);
+
+                    db.City.findByIdAndUpdate(
+                        req.params.id,
+                        obj,
+                        {new: true},
+                        (err, updatedCity) => {
+                        if (err) console.log(err);
+                        
+                        res.redirect(`/cities/${updatedCity._id}`);
+                    });
                 });
             });
-        };
+        }
     });
 });
 module.exports = router;
+
