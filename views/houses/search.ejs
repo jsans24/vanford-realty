@@ -7,15 +7,22 @@
 <body>
   <%- include('../partials/nav.ejs') %>
   
-  <form class="form-inline my-2 my-lg-0">
-    <input type="text" placeholder="address">
-    <input type="number" name="min_price" id="min_price" placeholder="min price">
-    <input type="number" name="max_price" id="max_price" placeholder="max price">
-    <input type="number" name="bedrooms" id="bedrooms" placeholder="bedrooms">
-    <input type="number" name="bathrooms" id="bathrooms" placeholder="bathrooms">
-    <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">
-  </form>
-
+  <% listings.forEach(listing => { %>
+    <div class='house-display' onclick="location.href = '/houses/<%=listing._id%>'">
+        
+        <img src='/uploads/<%= listing.img %>' 
+            alt='house-id#-<%=listing._id%>'>
+            <span class='house-description'>    
+                    <%= listing.address %>
+                    <br>
+                    <%= listing.city %>
+                    <br>
+                    <% const price = (listing.price) %>
+                    <%= '$' + price.toFixed(0) %>
+            </span>
+        
+    </div>
+    <% }) %>
   
   <%- include('../partials/footer.ejs') %>
 </body>
