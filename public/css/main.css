@@ -7,18 +7,33 @@ h2, h3, h4 {
     margin-left: 5%;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+}
+
 ul {
     list-style-type: none;
 }
 
+p {
+    font-family: 'Fira Sans', sans-serif;
+}
+
 /* NAVBAR PARTIAL */
+section {
+    margin: 2% 0;
+}
+
 .navbar {
     min-height: 80px;
 }
 
-section {
-    margin: 2% 0;
+.navbar-brand {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 2rem;
 }
+
+
 
 /* FOOTER PARTIAL */
 .address {
@@ -41,6 +56,10 @@ section {
     width: 150px;
 }
 
+.footer-name {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
 /* LANDING PAGE */
 .landing-page {
     display: flex;
@@ -61,15 +80,32 @@ section {
     margin: 20px 0 20px 0;
 }
 
+.new-city {
+    display: inline;
+}
+
+.edit-city {
+    display: inline;
+}
+
 .update-realtor{
     display: block;
     margin: 2%;
 }
 
+.listing {
+    margin: 2%;
+}
+
 .house-listing {
     display: flex;
+    flex-direction: column;
     align-content: center;
     margin: 2%
+}
+
+#menu-items {
+    text-align: center;
 }
 
 /* LOGIN / HOUSING FORMS  */
@@ -109,11 +145,20 @@ img {
 /* HOUSES SHOW */
 .show-page {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .show-realtor {
     margin: 5% 0 0 5%;
+}
+
+.realtor {
+    margin-left: 2%
+}
+
+#show-image {
+    width: 500px;
+    height: 400px
 }
 
 /* REALTOR INDEX */
