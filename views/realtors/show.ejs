@@ -34,6 +34,7 @@
     </div>
   
     <div class="listing-box properties-box">
+      <h5 class='col text-center'>NEWEST LISTINGS</h5>
         <% houses.forEach(house => { %>
           <figure class="realtors-listings" onclick="location.href='/houses/<%= house._id %>'">
             <img src="/uploads/<%= house.img %>" alt="house">

@@ -9,7 +9,7 @@
         <h2> <%=listing.address%> </h2>
         <h3> <%=listing.city %></h3>
         <% const price = (listing.price) %>
-        <h4><%= '$' + price.toFixed(0) %></h4>
+        <h4 id="house-price"><%= '$' + price.toFixed(0) %></h4>
     </div>
     <div class='container'>
     <% if (realtor.phone) var phoneNumber = realtor.phone.toString().split('') %>
@@ -38,15 +38,16 @@
             <div>
                 <p>Property Details:</p>
                 <ul>
-                    <li>Size: <%=listing.size%> </li>
+                    <li>Size: <%=listing.size%> sq.ft.</li>
                     <li>Bedrooms: <%=listing.bedrooms%> </li>
                     <li>Bathrooms: <%=listing.bathrooms%> </li>
                 </ul>
             </div>
         </div>
 
-        <div class='white-space'>
-
+        <div class='about-house'>
+            <h5>PROPERTY DESCRIPTION:</h5>
+            <p><%=listing.about%></p>
         </div>
     </div>
     </div>
