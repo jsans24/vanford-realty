@@ -27,13 +27,13 @@
                         </li>
                     <% } %>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
+                <form class="form-inline my-2 my-lg-0" action="/houses/search" method="GET">
                     <input type="text" placeholder="address">
                     <input type="number" name="min_price" id="min_price" placeholder="min price">
                     <input type="number" name="max_price" id="max_price" placeholder="max price">
                     <input type="number" name="bedrooms" id="bedrooms" placeholder="bedrooms">
                     <input type="number" name="bathrooms" id="bathrooms" placeholder="bathrooms">
-                    <a href="/houses/search"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></a>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
         </nav>
