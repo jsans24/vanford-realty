@@ -18,6 +18,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage}).single('img');
 
+//index route
 router.get('/', (req, res) => {
   db.Realtor.find({}, (err, allRealtors) => {
     if (err) return console.log(err);
@@ -27,17 +28,10 @@ router.get('/', (req, res) => {
   });
 });
 
+//create route
 router.get('/new', (req, res) => {
   res.render('realtors/new', {user: req.user,})
 });
-
-// router.post('/', (req, res) => {
-//   db.Realtor.create(req.body, (err, newRealtor) => {
-//     if (err) console.log(err);
-
-//     res.redirect('/realtors');
-//   });
-// });
 
 router.get('/:realtorId', (req, res) => {
   db.Realtor.findById(req.params.realtorId).populate('houses').exec((err, foundRealtor) => {
@@ -53,6 +47,7 @@ router.get('/:realtorId', (req, res) => {
   });
 });
 
+//edit record route
 router.get('/:realtorId/edit', (req, res) => {
   db.Realtor.findById(req.params.realtorId, (err, foundRealtor) => {
     if (err) console.log(err);
@@ -62,6 +57,7 @@ router.get('/:realtorId/edit', (req, res) => {
   });
 });
 
+//put route
 router.put('/:realtorId', (req, res) => {
   upload(req, res, (err) => {
 
@@ -102,6 +98,7 @@ router.put('/:realtorId', (req, res) => {
   });
 });
 
+//delete route
 router.delete('/:realtorId', (req, res) => {
   db.Realtor.findByIdAndDelete(req.params.realtorId, (err, deletedRealtor) => {
     if (err) console.log(err);

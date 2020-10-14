@@ -11,11 +11,11 @@
                 <img src='/uploads/<%= listing.img %>' alt='house-id#-<%=listing._id%>'>
                 <div>
                     <h4>About <%=city.name %>:</h4>
-                    <ul>
-                        <li>Population: <%=city.population%> </li>
-                        <li>Bedrooms: <%=listing.bedrooms%> </li>
-                        <li>Bathrooms: <%=listing.bathrooms%> </li>
+                    <h6>Population: <%=city.population%> </h6>
+                    <h6>Top Attractions:</h6>
+                    <ul id='attractions'>
                     </ul>
+                    <p>Bio: <%=city.bio%> </p>
                 </div>
             </div>
     </div>
