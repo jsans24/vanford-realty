@@ -21,7 +21,16 @@
                     value="<%= cityToEdit.population %>">
                 </div>
                 <div class='form-group col-md-6'>
-                    <label for='keyAttractions'>Attraction:</label>
+                    <label for='realtor'>Attractions:</label>
+                    <select class='form-control' id='keyAttractionsToDelete' name="keyAttractionsToDelete">
+                        <option value=""></option>
+                        <% cityToEdit.keyAttractions.forEach(attraction => { %>
+                        <option value='<%= attraction %>'><%= attraction %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class='form-group col-md-6'>
+                    <label for='keyAttractions'>New Attraction:</label>
                     <input type="text" id="keyAttractions" name="keyAttractions">
                 </div>
                 <div class='form-group col-md-6'>

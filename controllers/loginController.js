@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const db = require('../models');
 
-router.get('/', (req, res) => res.render('login'));
+router.get('/', (req, res) => res.render('login', {user: req.user}));
 
 router.post('/', (req, res, next) => {
     passport.authenticate('local', {

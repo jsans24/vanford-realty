@@ -22,10 +22,13 @@
             <input type='text' class='form-control' id='address' name='address'
             value='<%=listing.address%>' >
         </div>
-        <div class='form-group col-md-6'>
+        <div class='form-group col-sm-6'>
           <label for='city'>City:</label>
-          <input type='text' class='form-control' id='city' name='city'
-          value='<%=listing.city%>'>
+          <select class='form-control' id='city' name='city'>
+            <% cities.forEach(city => { %>
+            <option value='<%= city._id %>'><%= city.name %></option>
+            <% }) %> 
+          </select>
         </div>
         <div class='form-group col-md-6'>
         <label for='price'>Price:</label>

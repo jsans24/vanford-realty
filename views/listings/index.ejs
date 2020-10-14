@@ -17,7 +17,7 @@
             <button><a href='/cities/new'>Add a City</a></button>
         </div>
         <div class="edit-city">
-            <button><a href='/cities/edit'>Edit a City</a></button>
+            <button><a href='/cities/'>Edit a City</a></button>
         </div>
     
         <div class='listing'>
@@ -25,7 +25,11 @@
                 <% if (user.houses.includes(listings[i]._id)) { %>
                     <ul class='house-listing'>
                         <li><%= listings[i].address %></li>
-                        <li><%= listings[i].city %></li>
+                        <li><% cities.forEach(city => { %>
+                            <% if (listings[i].city == city._id.toString()) { %>
+                                <%= city.name %>
+                            <% } %>
+                        <% }) %></li>
                         <% const price = (listings[i].price) %>
                         <li><%= '$' + price.toFixed(0) %></li>
                     </ul>

@@ -24,15 +24,18 @@ const upload = multer({storage: storage}).single('img');
 router.get('/', ensureAuthenticated, (req, res) => {
     db.House.find({}, (err, houseListings) => {
         if(err) return console.log(err);
-
-        console.log(req.user.houses.address);
         
         db.Realtor.find({}, (err, realtors) => {
             if(err) return console.log(err);
-            res.render('listings/index', {
-                listings: houseListings,
-                realtors: realtors,
-                user: req.user,
+
+            db.City.find({}, (err, allCities) => {
+                if(err) return console.log(err);
+                res.render('listings/index', {
+                    listings: houseListings,
+                    realtors: realtors,
+                    user: req.user,
+                    cities: allCities
+                })
             })
         })
     });
@@ -42,8 +45,14 @@ router.get('/', ensureAuthenticated, (req, res) => {
 router.get('/new', (req, res) => {
     db.Realtor.find({}, (err, realtors) => {
         if(err) return console.log(err);
-        res.render('listings/new', {realtors, realtors,
-            user: req.user,});
+        db.City.find({}, (err, allCities) => {
+            if (err) console.log(err);
+            res.render('listings/new', {
+                realtors: realtors,
+                cities: allCities,
+                user: req.user,
+            });
+        })
     })
 });
 
@@ -109,11 +118,16 @@ router.get('/:id/edit', (req, res) => {
         if(err) return console.log(err);
         db.Realtor.find({}, (err, allRealtors) => {
             if (err) console.log(err);
+            
+            db.City.find({}, (err, allCities) => {
+                if (err) console.log(err);
 
-            res.render('listings/edit', {
-                listing: listingForEdit,
-                realtors: allRealtors,
-                user: req.user,
+                res.render('listings/edit', {
+                    listing: listingForEdit,
+                    realtors: allRealtors,
+                    user: req.user,
+                    cities: allCities,
+                });
             });
         });
     });
