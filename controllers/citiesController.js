@@ -46,29 +46,29 @@ router.post('/', (req, res) => {
     upload(req, res, (err) => {
         if(err) return console.log(err)
 
-        const obj = {
-            name: req.body.name,
-            population: req.body.population,
-            keyAttractions: req.body.keyAttractions,
-            houses: req.body.houses,
-            bio: req.body.bio,
-            img: req.file.filename,
-        };
+        if (req.file) {
+            var obj = {
+                name: req.body.name,
+                population: req.body.population,
+                keyAttractions: req.body.keyAttractions,
+                houses: req.body.houses,
+                bio: req.body.bio,
+                img: req.file.filename,
+            };
+        } else {
+            var obj = {
+                name: req.body.name,
+                population: req.body.population,
+                keyAttractions: req.body.keyAttractions,
+                houses: req.body.houses,
+                bio: req.body.bio,
+            };
+        }
 
         db.City.create(obj, (err, newCity) => {
             if(err) return console.log(err);
 
             console.log(newCity);
-    
-            db.House.find({}, (err, houses) => {
-                if(err) return console.log(err);
-    
-                houses.push(newCity._id);
-                houses.save((err, houseListings) => {
-                    if(err) return console.log(err);
-                    res.redirect('/cities');
-                });
-            });
         });
     })
 });
@@ -146,6 +146,18 @@ router.put('/:id', (req, res) => {
                 });
             });
         }
+    });
+});
+
+router.delete('/:id', (req, res) => {
+    db.City.findByIdAndDelete(req.params.id, (err, listingToDelete) => {
+        if(err) return console.log(err);
+
+        db.House.deleteMany({city: req.params.id}, (err, houses) => {
+            if(err) return console.log(err);
+
+            res.redirect('/listings');
+        });
     });
 });
 module.exports = router;

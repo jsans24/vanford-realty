@@ -117,11 +117,16 @@ router.get('/:id/edit', (req, res) => {
         if(err) return console.log(err);
         db.Realtor.find({}, (err, allRealtors) => {
             if (err) console.log(err);
+            
+            db.City.find({}, (err, allCities) => {
+                if (err) console.log(err);
 
-            res.render('listings/edit', {
-                listing: listingForEdit,
-                realtors: allRealtors,
-                user: req.user,
+                res.render('listings/edit', {
+                    listing: listingForEdit,
+                    realtors: allRealtors,
+                    user: req.user,
+                    cities: allCities,
+                });
             });
         });
     });
