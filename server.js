@@ -62,6 +62,8 @@ app.use((req,res, next) => {
 
 // ----- ROUTES ----- //  
 
+app.get('/contact', (req, res) => res.render('contact'));
+
 app.use('/', ctrl.landing);
 app.use('/register', ctrl.register);
 app.use('/login', ctrl.login);
