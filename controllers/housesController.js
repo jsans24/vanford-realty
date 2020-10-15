@@ -18,6 +18,7 @@ router.get('/', (req, res) => {
   });
 });
 
+// search/index route - get
 router.get('/search', (req, res) => {
   let split = req.url.split('&')
   let split2 = []

@@ -134,6 +134,7 @@ router.put('/:id', (req, res) => {
   });
 });
 
+// delete route
 router.delete('/:id', (req, res) => {
   db.City.findByIdAndDelete(req.params.id, (err, listingToDelete) => {
   if(err) return console.log(err);
