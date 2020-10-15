@@ -7,10 +7,10 @@ router.get('/', (req, res) => {
         if(err) console.log(err)
         const houseArray = [];
 
-        houseListing.forEach(house => {
-            houseArray.push(house)
-        });
-        const randomHouse = houseArray[Math.floor(Math.random() * houseArray.length)];
+        // houseListing.forEach(house => {
+        //     houseArray.push(house)
+        // });
+        // const randomHouse = houseArray[Math.floor(Math.random() * houseArray.length)];
         
         db.Realtor.find({}, (err, realtorListing) => {
             if(err) console.log(err)
@@ -21,7 +21,8 @@ router.get('/', (req, res) => {
             });
             const randomRealtor = realtorArray[Math.floor(Math.random() * realtorArray.length)];
             res.render('index', {
-                house: randomHouse,
+                house: houseListing,
+                // house: randomHouse,
                 realtor: randomRealtor,
                 user: req.user,
             })
