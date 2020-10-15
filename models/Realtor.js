@@ -23,6 +23,10 @@ const realtorSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'House',
   }],
+  blogs: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Blog',
+  }],
   img: String
 });
 

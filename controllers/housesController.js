@@ -41,8 +41,15 @@ router.get('/search', (req, res) => {
     }, 
     (err, allHouses) => {
         if (err) console.log(err);
-        res.render('houses/search', {listings: allHouses,
-            user: req.user,});
+        db.City.find({}, (err, allCities) => {
+            if (err) console.log(err);
+
+            res.render('houses/search', {
+                listings: allHouses,
+                user: req.user,
+                cities: allCities,
+            });
+        })
     });
 });
 

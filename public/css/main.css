@@ -222,10 +222,15 @@ img {
     width: 250px; height: 250px;
     text-align: center;
     cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+
 }
 
 .realtor-image {
     margin: auto;
+    height: auto;
+    width: auto;
     max-width: 100%;
     max-height: 100%;
     border-radius: 50%;
@@ -250,7 +255,11 @@ img {
 }
 
 .realtor-info {
-    width: 30%
+    width: 15vw;
+}
+
+.realtor-bio {
+    overflow-wrap: break-word;
 }
 
 /* https://www.w3schools.com/cssref/pr_pos_overflow.asp */
@@ -298,6 +307,19 @@ img {
     width: 900px;
     height: 450px;  
     opacity: 0.8;  
+}
+
+.city-image-box {
+    margin: 0 5vw;
+    width: 12vw;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: flex;
+}
+
+.city-image {
+    height: 20vh;
+    width: auto;
 }
 
 
