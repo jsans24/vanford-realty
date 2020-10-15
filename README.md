@@ -1,13 +1,17 @@
 # Vanford Realty
 ## Who is Vanford Realty?
 Vanford Realty is a premier real estate firm located in a major metropolitan area, that serves multiple areas within the region. Vanford realty provides a web application that shows a listing of homes and associated realtors and cities served. 
-User Story
-As a prospective home buyer, I want to use a web app that allows me to view a comprehensive listing of houses for sale, along with associated realtors and cities served. 
 
-Prospective home buyers will be able to find the site and come to a landing page showing a featured home or proceed to additional listing of houses, which the user will be able to click on a house listing to obtain more data, as well as the listing agent.
-The user can click on the page of the listing agent to obtain more information about the agent as well as additional houses listed by the agent.
-(Stretch) Additionally, the user will have the options to search the regions served by Vanford Realty and associated homes in those regions as well as realtors serving those regions.  
-(Stretch) Further, to provide additional security, the realtor will have a portal, which will allow the realtor to log into to create, update and delete listings in real time.
+User Story
+
+As a realtor, I want a secure web app that provides me the ability to create, update and delete listings in real time. 
+
+As a realtor, I want a web app that allows me to create blog articles that are relevant to my prospective clients in the homebuying process. 
+
+As a realtor, I want to provide an application that provides the prospective home buyer the ability to view a comprehensive listing of houses for sale, along with associated realtors and cities served. Prospective home buyers will be able to find the site and come to a landing page showing a featured home or proceed to additional listing of houses, which the user will be able to click on a house listing to obtain more data, as well as the listing agent.
+
+Additionally, as a realtor, I want to provide the prospective home buyer the ability to search the regions served by Vanford R
+
 ## Wireframes
 
 
@@ -47,9 +51,14 @@ express
 body-parser
 mongoose
 ejs
+dotenv
 method-override
-Passport - stretch
-
+multer
+bcrypt
+passport
+connect-flash
+express-session
+passport-local 
 
 ## Technologies
 Frontend - HTML, CSS, JS, Bootstrap
