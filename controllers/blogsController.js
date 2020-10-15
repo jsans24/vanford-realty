@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 const multer = require('multer');
+const { findByIdAndUpdate } = require('../models/City');
 
 //multer middleware
 //https://www.geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/
@@ -52,9 +53,16 @@ router.post('/', (req, res) => {
 
         db.Blog.create(obj, (err, newBlogPost) => {
             if(err) return console.log(err);
+            db.Realtor.findById(obj.author, (err, author) => {
+              if(err) return console.log(err);
+              
+              author.blogs.push(newBlogPost._id);
+              author.save((err, blogAuthor) => {
+                if(err) return console.log(err);
 
-            console.log(newBlogPost);
-            res.redirect('/blogs')
+                res.redirect('/blogs')
+              })
+            })
         });
     })
 });
@@ -64,8 +72,9 @@ router.get(`/:id`, (req, res) => {
     if (isNaN(req.params.id)) {
       db.Blog.findById(req.params.id, (err, blog) =>{
         if(err) return console.log(err);
-
-        db.Realtor.find({blog: blog}, (err, author) => {
+        
+        db.Realtor.findOne({blogs: blog._id}, (err, author) => {
+          console.log(author);
             res.render('blogs/show', {blog, user: req.user, author})
         })
     });
