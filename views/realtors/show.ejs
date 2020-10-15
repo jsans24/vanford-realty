@@ -45,7 +45,11 @@
             <figcaption>
               <ul>
                 <li><%= house.address %></li>
-                <li><%= house.city %></li>
+                <li> <% cities.forEach(city => { %>
+                  <% if (house.city == city._id.toString()) { %>
+                      <%= city.name %>
+                  <% } %>
+              <% }) %></li>
                 <% const price = (house.price) %>
                 <%= '$' + price.toFixed(0) %>
               </ul>

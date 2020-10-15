@@ -79,8 +79,7 @@ section {
     cursor: pointer;
 }
 
-.house-billboard {
-    margin-top: 0;
+.house-billboard {    
     width: 500px;
     height: auto;
 }
@@ -90,7 +89,6 @@ section {
     height: 250px;
     background: #838383;
     border: 1px solid black;
-    /* margin: 5% */
 }
 
 .featured {
@@ -222,7 +220,6 @@ img {
     width: 250px; height: 250px;
     text-align: center;
     cursor: pointer;
-    border-radius: 50%;
     overflow: hidden;
 
 }
@@ -328,7 +325,10 @@ img {
     margin: 0 0 10px 0;
 }
 
-
+.blog-space {
+    margin: 2% 0;
+    cursor: pointer;
+}
 
 
 
