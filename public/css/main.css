@@ -67,7 +67,7 @@ section {
 }
 
 .landing-picture {
-    width: 400px;
+    width: 500px;
     height: 300px
 }
 
@@ -90,7 +90,7 @@ section {
     height: 250px;
     background: #838383;
     border: 1px solid black;
-    margin: 5%
+    /* margin: 5% */
 }
 
 .featured {
@@ -101,7 +101,7 @@ section {
     border-radius: 50%;
 }
 
-.white-space {
+.blog {
     width: 300px;
 }
 
@@ -320,6 +320,12 @@ img {
 .city-image {
     height: 20vh;
     width: auto;
+}
+
+/* BLOG */
+
+.blog-article {
+    margin: 0 0 10px 0;
 }
 
 
