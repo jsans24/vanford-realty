@@ -309,6 +309,19 @@ img {
     opacity: 0.8;  
 }
 
+.city-image-box {
+    margin: 0 5vw;
+    width: 12vw;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: flex;
+}
+
+.city-image {
+    height: 20vh;
+    width: auto;
+}
+
 
 
 
