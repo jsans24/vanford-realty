@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("../partials/header.ejs") %>
+</head>
+<body>
+  <%- include('../partials/nav.ejs') %>
+  <div class="container">
+    <h1>Our Team</h1>
+    <ul>
+      <% allRealtors.forEach((realtor) => { %>
+        <div class='realtor-display' onclick="location.href = '/realtors/<%= realtor._id %>'">
+              <img class='realtor-image' src='/uploads/<%= realtor.img %>' alt='realtor-id#-<%=realtor._id%>'>
+                  <p><%= realtor.name %></p>
+              </span>
+          
+      </div>
+      <% }) %>
+    </ul>
+    <div class="push"></div>
+  </div>
+
+  <%- include('../partials/footer.ejs') %>
+</body>
+</html>

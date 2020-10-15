@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/header.ejs') %>
+</head>
+<body>
+  <%- include('./partials/nav.ejs') %>
+  <div class='container'>
+    <div class='form-screen'>
+      <h1>Register</h1>
+      <%- include('./partials/messages.ejs') %>
+  
+      <form action='/register' method='POST'>
+        <div class='form-group col-sm-6'>
+          <label for='name'>Name:</label>
+          <input type='text' class='form-control' id='name' name='name'  
+          placeholder='Enter Name' value="<%=typeof name !="undefined" ? name : '' %>"
+          required>
+          
+        </div>
+        <div class='form-group col-sm-6'>
+          <label for='email'>Email address:</label>
+          <input type='email' class='form-control' id='email' name='email' 
+          placeholder='Enter Email'
+          value="<%=typeof email !="undefined" ? email : '' %>" 
+          required>
+        </div>
+        <div class='form-group col-sm-6'>
+          <label for=password>Password:</label>
+          <input type="password" class="form-control" id='password' name='password' 
+          placeholder='Enter Password' 
+          value="<%=typeof password !="undefined" ? password : '' %>"
+          required>
+        </div>
+        <div class='col text-center'>
+          <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+      </form>
+  
+      <p class='text-center'>Already Have an Acccount? <a href="/login">Login</a></p>
+    </div>
+  </div>
+  
+</body>
+</html>

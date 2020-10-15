@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/header.ejs') %>
+</head>
+<body>
+  <%- include('../partials/nav.ejs') %>
+  <div class="container">
+
+    <% listings.forEach(listing => { %>
+      <div class='house-display' onclick="location.href = '/houses/<%=listing._id%>'">
+          
+          <img src='/uploads/<%= listing.img %>' 
+          alt='house-id#-<%=listing._id%>'>
+          <span class='house-description'>    
+            <%= listing.address %>
+            <br>
+            <% cities.forEach(city => { %>
+              <% if (listing.city == city._id.toString()) { %>
+                <%= city.name %>
+              <% } %>
+            <% }) %>
+            <br>
+            <% const price = (listing.price) %>
+            <%= '$' + price.toFixed(0) %>
+          </span>
+      </div>
+      <% }) %>  
+      <div class="push"></div>
+  </div>
+
+  <%- include('../partials/footer.ejs') %>
+</body>
+</html>

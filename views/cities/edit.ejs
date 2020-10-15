@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("../partials/header.ejs") %>
+</head>
+<body>
+  <%- include('../partials/nav.ejs') %>
+  <div class='container'>
+    <div class='form-screen'>
+      <h1>Edit: <%= cityToEdit.name %></h1>
+      <form action="/cities/<%= cityToEdit._id %>?_method=PUT" 
+        enctype='multipart/form-data' method="POST">
+        <div class='form-group col-md-6'>
+          <label for='name'>Name:</label>
+          <input type="text" id="name" name="name" 
+          value="<%= cityToEdit.name %>">
+        </div>
+        <div class='form-group col-md-6'>
+          <label for='population'>Popluation:</label>
+          <input type="number" id="population" name="population" 
+          value="<%= cityToEdit.population %>">
+        </div>
+        <div class='form-group col-md-6'>
+          <label for='realtor'>Attractions:</label>
+          <select class='form-control' id='keyAttractionsToDelete' name="keyAttractionsToDelete">
+            <option value=""></option>
+            <% cityToEdit.keyAttractions.forEach(attraction => { %>
+            <option value='<%= attraction %>'><%= attraction %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class='form-group col-md-6'>
+          <label for='keyAttractions'>New Attraction:</label>
+          <input type="text" id="keyAttractions" name="keyAttractions">
+        </div>
+        <div class='form-group col-md-6'>
+          <label for='bio'>About:</label>
+          <input type="textarea" id="bio" name="bio" 
+          value="<%= cityToEdit.bio %>">
+        </div>
+        <div class='form-group col-md-6'>
+          <label for='img'>City Photo:</label>
+          <input type='file' id='img' name='img' 
+          value="<%= cityToEdit.img %> ">
+        </div>
+        <div class='col text-center'>
+          <button type='submit' class='btn btn-primary'>Edit City Record</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

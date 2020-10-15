@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/header.ejs') %>
+</head>
+<body>
+  <%- include('../partials/nav.ejs') %>
+  <div class='container'>
+    <div class='form-screen'>
+      <h1>Add A City</h1>
+      <form action='/cities' enctype='multipart/form-data' method='POST'>
+        <div class='form-group col-sm-6'>
+          <label for='name'>Name:</label>
+          <input type='text' class='form-control' id='name' name='name' required>
+        </div>
+        <div class='form-group col-sm-6'>
+          <label for='keyAttractions'>Attraction:</label>
+          <input type='text' class='form-control' id='keyAttractions'
+          name='keyAttractions'>
+        </div>
+        <div class='form-group col-sm-6'>
+        <label for='population'>Population:</label>
+          <input type='number' class='form-control' id='population' name='population'
+          required>
+        </div>
+        <div class='form-group col-sm-6'>
+          <label for='bio'>About:</label>
+          <input type="textarea" class='form-control' id='bio' name='bio'
+          required>
+        </div>
+        <div class='form-group col-sm-6'>
+          <label for='img'>City Photo:</label>
+          <input type='file' class='form-control' id='img' name='img'>
+        </div>
+        <div class='col text-center'>
+          <button id='submit' type='submit' class='btn btn-primary'>Add City</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
