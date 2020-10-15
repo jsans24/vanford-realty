@@ -28,10 +28,11 @@ router.get('/new', (req, res) => {
 //post route
 router.post('/', (req, res) => {
     upload(req, res, (err) => {
+      let obj = "";
         if(err) return console.log(err)
 
         if (req.file) {
-            var obj = {
+            obj = {
                 title: req.body.title,
                 publishDate: Date.now(),
                 author: req.user._id,
@@ -39,9 +40,9 @@ router.post('/', (req, res) => {
                 synopsis: req.body.synopsis,
                 blogPost: req.body.blogPost,
                 img: req.file.filename,
-            };
+            }
         } else {
-            var obj = {
+            obj = {
                 title: req.body.title,
                 publishDate: Date.now(),
                 author: req.user._id,
@@ -61,8 +62,8 @@ router.post('/', (req, res) => {
                 if(err) return console.log(err);
 
                 res.redirect('/blogs')
-              })
-            })
+              });
+            });
         });
     })
 });
@@ -81,7 +82,7 @@ router.get(`/:id`, (req, res) => {
 } else {
         db.Blog.find({}, (err, allBlogs) => {
         if (err) console.log(err);
-        const pageNumber = req.url.split('/')[1]
+        const pageNumber = parseInt(req.url.split('/')[1])
         res.render('blogs/index', {
           page: pageNumber,
           user: req.user,
@@ -92,94 +93,65 @@ router.get(`/:id`, (req, res) => {
   }
 });
 
+//edit route
+router.get('/:id/edit', (req, res) => {
+    db.Blog.findById(req.params.id, (err, blogToEdit) => {
+        if (err) console.log(err);
 
+        res.render('blogs/edit', {blog: blogToEdit,
+            user: req.user,});
+    });
+});
 
-// //edit route
-// router.get('/:id/edit', (req, res) => {
-//     db.Blog.findById(req.params.id, (err, cityToEdit) => {
-//         if (err) console.log(err);
+//put route
+router.put('/:id', (req, res) => {
+    let obj = "";
+    upload(req, res, (err) => {
+    if (err) return console.log(err);
+        if (req.file) {
+          obj = {
+            title: req.body.title,
+            topic: req.body.topic,
+            synopsis: req.body.synopsis,
+            blogPost: req.body.blogPost,
+            img: req.file.filename,
+          };
+        } else {
+          obj = {
+              title: req.body.title,
+              topic: req.body.topic,
+              synopsis: req.body.synopsis,
+              blogPost: req.body.blogPost,
+          }
+        };
+        db.Blog.findByIdAndUpdate(
+        req.params.id,
+        obj,
+        {new: true},
+        (err, updatedBlog) => {
+            if (err) console.log(err);
+            res.redirect(`/blogs/${updatedBlog._id}`);
+        });
+    });
+});
 
-//         res.render('blogs/edit', {cityToEdit,
-//             user: req.user,});
-//     });
-// });
+router.delete('/:id', (req, res) => {
+    db.Blog.findByIdAndDelete(req.params.id, (err, blogToDelete) => {
+        if(err) return console.log(err);
 
-// //put route
-// router.put('/:id', (req, res) => {
-//     upload(req, res, (err) => {
+        db.Realtor.findById(blogToDelete.author, (err, realtor) => {
+          if(err) return console.log(err);
 
-//     if (err) return console.log(err);
-//         if (req.file) {
-//         const obj = {
-//             name: req.body.name,
-//             population: req.body.population,
-//             houses: req.body.houses,
-//             bio: req.body.bio,
-//             img: req.file.filename,
-//         };
+          console.log(realtor);
 
-//         db.Blog.findByIdAndUpdate(
-//             req.params.id,
-//             {$push: {keyAttractions: req.body.keyAttractions}},
-//             {new: true},
-//             (err, updatedCity) => {
-//             if (err) console.log(err);
-        
-//             db.Blog.findByIdAndUpdate(
-//                 req.params.id,
-//                 obj,
-//                 {new: true},
-//                 (err, updatedCity) => {
-//                 if (err) console.log(err);
-                
-//                 res.redirect(`/blogs/${updatedCity._id}`);
-//             });
-//         });
-//         } else {
-//             const obj = {
-//                 name: req.body.name,
-//                 population: req.body.population,
-//                 houses: req.body.houses,
-//                 bio: req.body.bio,
-//             };
-//             db.Blog.findByIdAndUpdate(
-//             req.params.id,
-//             {$pull: {keyAttractions: req.body.keyAttractionsToDelete},},
-//             {new: true},
-//             (err, updatedCity) => {
-//             if (err) console.log(err);
-//                 db.Blog.findByIdAndUpdate(
-//                 req.params.id,
-//                 {$push: {keyAttractions: req.body.keyAttractions},},
-//                 {new: true},
-//                 (err, updatedCity) => {
-//                 if (err) console.log(err);
+          realtor.blogs.remove(blogToDelete);
+          realtor.save((err) => {
+              if(err) return console.log(err);
+              res.redirect('/blogs');
+          })
+        });
+    });
+});
 
-//                     db.Blog.findByIdAndUpdate(
-//                         req.params.id,
-//                         obj,
-//                         {new: true},
-//                         (err, updatedCity) => {
-//                         if (err) console.log(err);
-                        
-//                         res.redirect(`/blogs/${updatedCity._id}`);
-//                     });
-//                 });
-//             });
-//         }
-//     });
-// });
-
-// router.delete('/:id', (req, res) => {
-//     db.Blog.findByIdAndDelete(req.params.id, (err, listingToDelete) => {
-//         if(err) return console.log(err);
-
-//         db.House.deleteMany({city: req.params.id}, (err, houses) => {
-//             if(err) return console.log(err);
-
-//             res.redirect('/listings');
-//         });
-//     });
-// });
 module.exports = router;
 

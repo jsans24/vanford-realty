@@ -13,24 +13,28 @@
   <div class="show-page">
     <div class="realtor-info">
       <h4><%= realtor.name %>'s Bio:</h4>
-      <figcaption class="realtor-bio"><%= realtor.bio %> </figcaption>
+      <p class="realtor-bio"><%= realtor.bio %> </p>
     </div>
     <div class="realtor-img-box">
-      <img src="/uploads/<%= realtor.img %>"  class="realtor-show" alt="<%= realtor.name %>">
+      <figure>
+        <img src="/uploads/<%= realtor.img %>"  class="realtor-show" alt="<%= realtor.name %>">
+        <figcaption>
+          <ul>
+            <% if (phoneNumber) { %>
+              <li><i class="fas fa-phone"></i> <a href="tel:<%= realtor.phone %>">
+                (<%= phoneNumber[0]%><%=phoneNumber[1]%><%=phoneNumber[2]%>)
+                <%= phoneNumber[3]%><%= phoneNumber[4]%><%= phoneNumber[5]%> - 
+                <%= phoneNumber[6]%><%= phoneNumber[7]%><%= phoneNumber[8]%><%= phoneNumber[9]%>
+              </a></li>
+            <% } %>
+            <li><i class="far fa-envelope"></i> <a href="mailto:<%= realtor.email %>"><%= realtor.email %></a></li>
+            <% if (address) { %>
+              <li><a href="http://maps.google.com/maps?q=<%= address[0] %>+<%= address[1] %>+<%= address[2] %>"><%= realtor.address %></a></li>
+            <% } %> 
+          </ul>
+        </figcaption>
+      </figure>
       
-      <ul>
-        <% if (phoneNumber) { %>
-          <li><i class="fas fa-phone"></i> <a href="tel:<%= realtor.phone %>">
-            (<%= phoneNumber[0]%><%=phoneNumber[1]%><%=phoneNumber[2]%>)
-            <%= phoneNumber[3]%><%= phoneNumber[4]%><%= phoneNumber[5]%> - 
-            <%= phoneNumber[6]%><%= phoneNumber[7]%><%= phoneNumber[8]%><%= phoneNumber[9]%>
-          </a></li>
-        <% } %>
-        <li><i class="far fa-envelope"></i> <a href="mailto:<%= realtor.email %>"><%= realtor.email %></a></li>
-        <% if (address) { %>
-          <li><a href="http://maps.google.com/maps?q=<%= address[0] %>+<%= address[1] %>+<%= address[2] %>"><%= realtor.address %></a></li>
-        <% } %> 
-      </ul>
     </div>
   
     <div class="listing-box properties-box">

@@ -16,6 +16,29 @@
         </div>
       <% } %>
     <% } %>
+    
+    <% if (user) { %>
+      <button onclick="location.href='/blogs/new'">Make New Post</button>
+    <% } %>
+
+    <% console.log(page); %> 
+    <% if (page > 1) { %>
+      <button onclick="location.href='/blogs/1'"><<</button>
+      <button onclick="location.href='/blogs/<%= page - 1 %>'"><</button>
+      <% if (page > 2) { %>
+        <button onclick="location.href='/blogs/<%= page - 2 %>'"><%= page - 2 %></button>
+      <% } %>
+      <button onclick="location.href='/blogs/<%= page - 1 %>'"><%= page - 1 %></button>
+      <% } %>
+      <% if (Math.floor(blogs.length/5) + 1 > page) { %>
+        <button onclick="location.href='/blogs/<%= page + 1 %>'"><%= page + 1 %></button>
+        <% if (Math.floor(blogs.length/5) + 1 > page + 1) { %>
+          <button onclick="location.href='/blogs/<%= page + 2 %>'"><%= page + 2 %></button>
+        <% } %>
+        <button onclick="location.href='/blogs/<%= page + 1 %>'">></button>
+        <button onclick="location.href='/blogs/<%= Math.floor(blogs.length/5) + 1 %>'">>></button>
+      <% } %>
+    
 
     <%- include('../partials/footer.ejs') %>
 </body>

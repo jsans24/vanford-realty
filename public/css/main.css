@@ -229,6 +229,8 @@ img {
 
 .realtor-image {
     margin: auto;
+    height: auto;
+    width: auto;
     max-width: 100%;
     max-height: 100%;
     border-radius: 50%;
@@ -253,7 +255,11 @@ img {
 }
 
 .realtor-info {
-    width: 30%
+    width: 15vw;
+}
+
+.realtor-bio {
+    overflow-wrap: break-word;
 }
 
 /* https://www.w3schools.com/cssref/pr_pos_overflow.asp */
