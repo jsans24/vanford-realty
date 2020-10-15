@@ -67,8 +67,6 @@ router.post('/', (req, res) => {
 
         db.City.create(obj, (err, newCity) => {
             if(err) return console.log(err);
-
-            console.log(newCity);
             res.redirect('/cities');
         });
     })

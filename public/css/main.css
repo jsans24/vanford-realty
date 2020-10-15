@@ -1,6 +1,6 @@
 h1 {
     text-align: center;
-    margin: 25px 0 25px 0;
+    margin: 25px 0;
 }
 
 h2, h3, h4 {
@@ -36,14 +36,30 @@ section {
 
 
 /* FOOTER PARTIAL */
+html, body {
+    height: 100vh;
+    margin: 0;
+}
+
 .address {
     padding: 3%;
 }
 
 .footer {
     display: flex;
+    height: 25vh;
+    width: 100vw;
     justify-content: space-between;
     background:  #9cada4;
+}
+
+.push {
+    height: 25vh;
+}
+
+.container {
+    min-height: 100%;
+    margin-bottom: -25vh;
 }
 
 .social-media {
@@ -281,6 +297,11 @@ img {
 
 .city-listing-box {
     margin: 2% 9%;
+    display: flex;
+}
+
+.citys-listings {
+    margin: 0 1vw;
 }
 
 .photo {
@@ -289,10 +310,10 @@ img {
 }
 
 .text-overlay {
-    position: absolute;
-    width: 600px;
-    top: 80%;
-    left: 25%;
+    position: relative;
+    top: 30vh;
+    left: 15vw;
+    width: 30vw;
     z-index: 1;
     background: black;
     opacity: 0.4;
@@ -300,24 +321,35 @@ img {
 }
 
 #city-image {
-    margin: 0 auto;
-    width: 900px;
-    height: 450px;  
-    opacity: 0.8;  
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    bottom: 30vh;
+    opacity: 0.8;
 }
 
-.city-image-box {
-    margin: 0 5vw;
-    width: 12vw;
-    overflow-x: hidden;
-    overflow-y: hidden;
+.city-show-box {
+    overflow: hidden;
+    width: 60vw;
+    height: 60vh;
+}
+
+.city-index {
     display: flex;
+    flex-flow: wrap;
+}
+
+
+.city-display {
+    margin: 0 5vw;
 }
 
 .city-image {
-    height: 20vh;
-    width: auto;
+    min-height: fit-content;
+    width: fit-content;
 }
+
+
 
 /* BLOG */
 

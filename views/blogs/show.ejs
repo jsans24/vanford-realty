@@ -6,6 +6,7 @@
 <body>
     <%- include('../partials/nav.ejs') %>
     <div class='container'>
+      <img src="/uploads/<%= blog.img %>" alt="<%= blog.title %> ">
         <h2 class='blog-article'> <%=blog.title%> </h2>
                     <h4 class='blog-article' onclick="location.href='/realtors/<%= author._id %>'"><%= author.name %></h4>
                     <h6><%=blog.publishDate.toLocaleString('en-US', {timeZone: "UTC", day: "2-digit", month: "short", year: "numeric"})%></h6>
@@ -22,6 +23,7 @@
         </form>    
         <% } %>
     <% } %>
+    <div class="push"></div>
   </div>
     <%- include('../partials/footer.ejs') %>
 </body>

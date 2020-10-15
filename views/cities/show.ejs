@@ -6,12 +6,15 @@
 <body>
     <%- include('../partials/nav.ejs') %>
     <div class='container'>
-        <div class=" photo row text-center">
-            <img id='city-image' src='/uploads/<%=city.img%>' alt="<%= city.name %>">
-        </div>
-        <div class='text-overlay'>
-            <h1 class='city-text display-2'> <%=city.name%> </h1>
-        </div>
+        <section class="city-show-box">
+            <div class='text-overlay'>
+                <h1 class='city-text display-2'> <%=city.name%> </h1>
+            </div>
+            <div class=" photo row text-center">
+                <img id='city-image' src='/uploads/<%=city.img%>' alt="<%= city.name %>">
+            </div>
+        </section>
+        
         <p> <%=city.bio%> </p>
         <h4 class='city-show'>Population: <%=city.population%> </h4>
                     
@@ -22,24 +25,22 @@
                         <% }) %>
                     </ul>
                     
-                </div>
+                    <div class="city-listing-box">
+                        <% listings.forEach(house => { %>
+                            <figure class="citys-listings" onclick="location.href='/houses/<%= house._id %>'">
+                                <img src="/uploads/<%= house.img %>" alt="house">
+                                <figcaption>
+                                    <ul>
+                                        <li><%= house.address %></li>
+                                        <% const price = (house.price) %>
+                                        <%= '$' + price.toFixed(0) %>
+                                    </ul>
+                                </figcaption>
+                            </figure>
+                        <% }); %>
+                    </div>
+                    <div class="push"></div>
             </div>
-            <div class="city-listing-box">
-                <% listings.forEach(house => { %>
-                    <figure class="city's-listings" onclick="location.href='/houses/<%= house._id %>'">
-                        <img src="/uploads/<%= house.img %>" alt="house">
-                        <figcaption>
-                            <ul>
-                                <li><%= house.address %></li>
-                                <% const price = (house.price) %>
-                                <%= '$' + price.toFixed(0) %>
-                            </ul>
-                        </figcaption>
-                    </figure>
-                <% }); %>
-            </div>
-    </div>
-    
     
     <%- include('../partials/footer.ejs') %>
 </body>

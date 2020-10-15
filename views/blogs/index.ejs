@@ -24,7 +24,12 @@
         <% } %>   
       <% if (user) { %>
         <button onclick="location.href='/blogs/new'">Make New Post</button>
+<<<<<<< HEAD
       <% } %> 
+=======
+      <% } %>
+
+>>>>>>> submaster
       <% if (page > 1) { %>
         <button onclick="location.href='/blogs/1'"></button>
         <button onclick="location.href='/blogs/<%= page - 1 %>'"></button>
@@ -41,6 +46,7 @@
           <button onclick="location.href='/blogs/<%= page + 1 %>'">></button>
           <button onclick="location.href='/blogs/<%= Math.floor(blogs.length/5) + 1 %>'">>></button>
         <% } %>
+        <div class="push"></div>
     </div>
     <%- include('../partials/footer.ejs') %>
 </body>
