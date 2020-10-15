@@ -297,6 +297,11 @@ img {
 
 .city-listing-box {
     margin: 2% 9%;
+    display: flex;
+}
+
+.citys-listings {
+    margin: 0 1vw;
 }
 
 .photo {
@@ -323,6 +328,12 @@ img {
     opacity: 0.8;
 }
 
+.city-show-box {
+    overflow: hidden;
+    width: 60vw;
+    height: 60vh;
+}
+
 .city-index {
     display: flex;
     flex-flow: wrap;
@@ -337,6 +348,8 @@ img {
     min-height: fit-content;
     width: fit-content;
 }
+
+
 
 /* BLOG */
 

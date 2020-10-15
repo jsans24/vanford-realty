@@ -67,8 +67,6 @@ router.put('/:realtorId', (req, res) => {
   upload(req, res, (err) => {
 
     if (err) return console.log(err);
-
-    console.log(req.body);
     
       if (req.file) {
         const obj = {
@@ -110,8 +108,12 @@ router.delete('/:realtorId', (req, res) => {
     
     db.House.deleteMany({realtor: deletedRealtor._id}, (err, deletedHouses) => {
       if (err) console.log(err);
-
-      res.redirect('/realtors');
+      
+      db.Blog.deleteMany({author: deletedRealtor._id}, (err, deletedBlogs) => {
+        if (err) console.log(err);
+        
+        res.redirect('/realtors');
+      });
     });
   });
 });

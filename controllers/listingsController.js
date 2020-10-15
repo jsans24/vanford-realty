@@ -76,8 +76,6 @@ router.post('/', (req, res) => {
 
         db.House.create(obj, (err, newListing) => {
             if(err) return console.log(err);
-
-            console.log(newListing);
     
             db.Realtor.findById(req.body.realtor, (err, realtor) => {
                 if(err) return console.log(err);
