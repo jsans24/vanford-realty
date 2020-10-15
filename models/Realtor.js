@@ -28,7 +28,7 @@ const realtorSchema = new mongoose.Schema({
     ref: 'Blog',
   }],
   img: String
-});
+}, {timestamps: true});
 
 const Realtor = mongoose.model('Realtor', realtorSchema);
 

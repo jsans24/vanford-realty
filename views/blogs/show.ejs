@@ -7,22 +7,22 @@
     <%- include('../partials/nav.ejs') %>
     <div class='container'>
       <img src="/uploads/<%= blog.img %>" alt="<%= blog.title %> ">
-        <h2 class='blog-article'> <%=blog.title%> </h2>
-                    <h4 class='blog-article' onclick="location.href='/realtors/<%= author._id %>'"><%= author.name %></h4>
-                    <h6><%=blog.publishDate.toLocaleString('en-US', {timeZone: "UTC", day: "2-digit", month: "short", year: "numeric"})%></h6>
-                    <p><%=blog.blogPost%> </p>
-                
-
-    <% if (user) { %>
-      <% if (user.name == author.name) { %>
-        <form action='/blogs/<%= blog._id %>?_method=DELETE' method='POST'>
-          <input type='submit' value='Remove Listing'>
-        </form>
-        <form action='/blogs/<%= blog._id %>/edit' method='GET'>
-          <input type='submit' value='Edit Post'>
-        </form>    
-        <% } %>
-    <% } %>
+      <h2 class='blog-article'> <%=blog.title%> </h2>
+      <h4 class='blog-article' onclick="location.href='/realtors/<%= author._id %>'"><%= author.name %></h4>
+      <h6><%=blog.publishDate.toLocaleString('en-US', {timeZone: "UTC", day: "2-digit", month: "short", year: "numeric"})%></h6>
+      <p><%=blog.blogPost%> </p>
+  
+      <% if (user) { %>
+        <% if (user.name == author.name) { %>
+          <form action='/blogs/<%= blog._id %>?_method=DELETE' method='POST'>
+            <input type='submit' value='Remove Listing'>
+          </form>
+          <form action='/blogs/<%= blog._id %>/edit' method='GET'>
+            <input type='submit' value='Edit Post'>
+          </form>    
+          <% } %>
+      <% } %>
+      
     <div class="push"></div>
   </div>
     <%- include('../partials/footer.ejs') %>
