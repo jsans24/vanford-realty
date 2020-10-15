@@ -7,18 +7,21 @@
     <%- include('../partials/nav.ejs') %>
     <div class=container>
       <h1>Realtor Blogs</h1>
-      <% for( let i = page * 5 - 1; i > page * 5 - 6; i--) { %>
-        <% if (blogs[i]) { %>
-          <div onclick="location.href='/blogs/<%= blogs[i]._id %>'">
-            <h6><%= blogs[i].publishDate.toLocaleString('en-US', 
-              {timeZone: "UTC", day: "2-digit", month: "short", year: "numeric"}) %>
-              </h6>
-            <h3 class='blog-article'><%= blogs[i].title %></h3>
-            <h5><%= blogs[i].synopsis %></h5>
-            
-          </div>
+      
+        <% for( let i = page * 5 - 1; i > page * 5 - 6; i--) { %>
+          <div class='blog-space'>
+          <% if (blogs[i]) { %>
+            <div onclick="location.href='/blogs/<%= blogs[i]._id %>'">
+              <h6><%= blogs[i].publishDate.toLocaleString('en-US', 
+                {timeZone: "UTC", day: "2-digit", month: "short", year: "numeric"}) %>
+                </h6>
+              <h3 class='blog-article'><%= blogs[i].title %></h3>
+              <h5><%= blogs[i].synopsis %></h5>
+              
+            </div>
+          <% } %>
+        </div>
         <% } %>
-      <% } %>
       
       <% if (user) { %>
         <button onclick="location.href='/blogs/new'">Make New Post</button>
