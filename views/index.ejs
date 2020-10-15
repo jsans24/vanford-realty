@@ -9,7 +9,7 @@
         <div class='landing-page'>
             <div class='blog'>
                 <h5>VanFord Blog</h5>
-                <% for( let i = 0; i < blogs.length; i++) { %>
+                <% for( let i = blogs.length - 1; i > blogs.length - 3; i--) { %>
                     <% if (blogs[i]) { %>
                 <h6><%= blogs[i].publishDate.toLocaleString('en-US', 
                     {timeZone: "UTC", day: "2-digit", month: "short", year: "numeric"}) %>
@@ -27,7 +27,13 @@
                     <img class="landing-picture" src='<%=house.img %>' alt='house-id#-<%=house._id%>'>
                 </div>
                 <h4 class='listing'><%= house.address %></h4>
-                <h5 class='listing'><%= house.city %></h5>
+
+
+                <h5 class='listing'> <% cities.forEach(city => { %>
+                            <% if (house.city == city._id.toString()) { %>
+                                <%= city.name %>
+                            <% } %>
+                        <% }) %></h5>
                 <% const price = (house.price) %>
                 <h5 class='listing'><%= '$' + price.toFixed(0) %></h5>
                 <% } %>

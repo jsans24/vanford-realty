@@ -26,12 +26,17 @@ router.get('/', (req, res) => {
         db.Blog.find({}, (err, blogs) => {
             if(err) return console.log(err);
 
+        db.City.find({}, (err, cities) => {
+            if(err) return console.log(err)
+
             res.render('index', {
                 house: randomHouse,
                 realtor: randomRealtor,
                 user: req.user,
-                blogs: blogs
+                blogs: blogs,
+                cities
             })
+        })      
         })
         })
     })
