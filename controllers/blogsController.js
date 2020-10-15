@@ -17,6 +17,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage}).single('img');
 
+//index route
 router.get('/', (req, res) => res.redirect('/blogs/1'))
 
 //create route - get
@@ -68,7 +69,7 @@ router.post('/', (req, res) => {
     })
 });
 
-//index route 
+//show route 
 router.get(`/:id`, (req, res) => {
     if (isNaN(req.params.id)) {
       db.Blog.findById(req.params.id, (err, blog) =>{

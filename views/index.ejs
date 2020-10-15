@@ -7,36 +7,29 @@
     <%- include('./partials/nav.ejs') %>
     <div class="container">
         <div class='landing-page'>
-            <div class='white-space'>
-                
+            <div class='blog'>
+                <h5>VanFord Blog</h5>
+                <% for( let i = 0; i < blogs.length; i++) { %>
+                    <% if (blogs[i]) { %>
+                <h6><%= blogs[i].publishDate.toLocaleString('en-US', 
+                    {timeZone: "UTC", day: "2-digit", month: "short", year: "numeric"}) %>
+                    </h6>
+                <h3 class='blog-article'><%= blogs[i].title %></h3>
+                <p><%= blogs[i].synopsis %></p>
+                <p><a href='/blogs/<%=blogs[i]._id%>'>Read More Here</a></p>
+                <% } %>
+                <% } %>
             </div>
             <div class='house-billboard'>
-                <h5 class='listing'>Featured Listings</h5>
+                <h5 class='listing'>Featured Listing</h5>
                 <% if (house) { %>
-                <!-- <div class='landing-images' onclick="location.href = '/houses/<%=house._id%>'">
-                    <img class="landing-picture" src='<%#house.img %>'>
+                <div class='landing-images' onclick="location.href = '/houses/<%=house._id%>'">
+                    <img class="landing-picture" src='<%=house.img %>' alt='house-id#-<%=house._id%>'>
                 </div>
-                <h4 class='listing'><%# house.address %></h4>
-                <h5 class='listing'><%# house.city %></h5>
-                <%# const price = (house.price) %>
-                <h5 class='listing'><%# '$' + price.toFixed(0) %></h5> -->
-
-
-                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                       
-                      <div class="carousel-item active">
-                        <img src="<%=house[0].img%>" class="d-block w-100" alt="...">
-                      </div>
-                        
-                      <div class="carousel-item">
-                        <img src="<%=house[1].img%>" class="d-block w-100" alt="...">
-                      </div>
-                      <!-- <div class="carousel-item">
-                        <img src="<%#house[2].img%>" class="d-block w-100" alt="...">
-                      </div> -->
-                    </div>
-                </div>
+                <h4 class='listing'><%= house.address %></h4>
+                <h5 class='listing'><%= house.city %></h5>
+                <% const price = (house.price) %>
+                <h5 class='listing'><%= '$' + price.toFixed(0) %></h5>
                 <% } %>
             </div>
             <div class='realtor-month'>
