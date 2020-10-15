@@ -31,16 +31,16 @@ const ctrl = require('./controllers');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 app.use((req,res,next) => {
-    res.locals.currentUser = req.user;
-    next();
+  res.locals.currentUser = req.user;
+  next();
 });
 
 //----- EXPRESS SESSION (every user of your API or website will be assigned a unique 
 //session, and this allows you to store the user state) ----- //
 app.use(session({
-    secret: 'secret',
-    resave: true,
-    saveUninitialized: true,
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true,
 }));
 
 // ------ PASSPORT ----- //
@@ -53,11 +53,11 @@ app.use(flash());
 
 // ------ GLOBAL VARIABLES ----- //
 app.use((req,res, next) => {
-    res.locals.success_msg = req.flash('success_msg');
-    res.locals.error_msg = req.flash('error_msg');
-    res.locals.error = req.flash('error');
-    res.locals.user = req.user;
-    next();
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  res.locals.user = req.user;
+  next();
 })
 
 // ----- ROUTES ----- //  

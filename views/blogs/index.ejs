@@ -1,50 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('../partials/header.ejs') %>
+  <%- include('../partials/header.ejs') %>
 </head>
 <body>
-    <%- include('../partials/nav.ejs') %>
-    <div class=container>
-      <h1>Realtor Blogs</h1>
+  <%- include('../partials/nav.ejs') %>
+  <div class=container>
+    <h1>Realtor Blogs</h1>
+      <% for( let i = page * 5 - 1; i > page * 5 - 6; i--) { %>
       
-        <% for( let i = page * 5 - 1; i > page * 5 - 6; i--) { %>
-          <div class='blog-space'>
-          <% if (blogs[i]) { %>
-            <div onclick="location.href='/blogs/<%= blogs[i]._id %>'">
-              <h6><%= blogs[i].publishDate.toLocaleString('en-US', 
-                {timeZone: "UTC", day: "2-digit", month: "short", year: "numeric"}) %>
-                </h6>
-              <h3 class='blog-article'><%= blogs[i].title %></h3>
-              <h5><%= blogs[i].synopsis %></h5>
-              
-            </div>
-          <% } %>
-        </div>
+        <div class='blog-space'>
+        <% if (blogs[i]) { %>
+          <div onclick="location.href='/blogs/<%= blogs[i]._id %>'">
+            <h6><%= blogs[i].publishDate.toLocaleString('en-US', 
+              {timeZone: "UTC", day: "2-digit", month: "short", year: "numeric"}) %>
+              </h6>
+            <h3 class='blog-article'><%= blogs[i].title %></h3>
+            <h5><%= blogs[i].synopsis %></h5>
+          </div>
         <% } %>
-      
-      <% if (user) { %>
-        <button onclick="location.href='/blogs/new'">Make New Post</button>
+      </div>
       <% } %>
 
-      <% if (page > 1) { %>
-        <button onclick="location.href='/blogs/1'"></button>
-        <button onclick="location.href='/blogs/<%= page - 1 %>'"></button>
-        <% if (page > 2) { %>
-          <button onclick="location.href='/blogs/<%= page - 2 %>'"><%= page - 2 %></button>
+    <% if (user) { %>
+      <button onclick="location.href='/blogs/new'">Make New Post</button><br>
+    <% } %>
+
+    <% if (page > 1) { %>
+      <button onclick="location.href='/blogs/1'"></button>
+      <button onclick="location.href='/blogs/<%= page - 1 %>'"></button>
+      <% if (page > 2) { %>
+        <button onclick="location.href='/blogs/<%= page - 2 %>'"><%= page - 2 %></button>
+      <% } %>
+      <button onclick="location.href='/blogs/<%= page - 1 %>'"><%= page - 1 %></button>
+      <% } %>
+      <% if (Math.floor(blogs.length/5) + 1 > page) { %>
+        <button onclick="location.href='/blogs/<%= page + 1 %>'"><%= page + 1 %></button>
+        <% if (Math.floor(blogs.length/5) + 1 > page + 1) { %>
+          <button onclick="location.href='/blogs/<%= page + 2 %>'"><%= page + 2 %></button>
         <% } %>
-        <button onclick="location.href='/blogs/<%= page - 1 %>'"><%= page - 1 %></button>
-        <% } %>
-        <% if (Math.floor(blogs.length/5) + 1 > page) { %>
-          <button onclick="location.href='/blogs/<%= page + 1 %>'"><%= page + 1 %></button>
-          <% if (Math.floor(blogs.length/5) + 1 > page + 1) { %>
-            <button onclick="location.href='/blogs/<%= page + 2 %>'"><%= page + 2 %></button>
-          <% } %>
-          <button onclick="location.href='/blogs/<%= page + 1 %>'">></button>
-          <button onclick="location.href='/blogs/<%= Math.floor(blogs.length/5) + 1 %>'">>></button>
-        <% } %>
-        <div class="push"></div>
-    </div>
-    <%- include('../partials/footer.ejs') %>
+        <button onclick="location.href='/blogs/<%= page + 1 %>'">></button>
+        <button onclick="location.href='/blogs/<%= Math.floor(blogs.length/5) + 1 %>'">>></button>
+      <% } %>
+      <div class="push"></div>
+  </div>
+  <%- include('../partials/footer.ejs') %>
 </body>
 </html>

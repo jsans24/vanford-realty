@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('../partials/header.ejs') %>
+  <%- include('../partials/header.ejs') %>
 </head>
 <body>
-    <%- include('../partials/nav.ejs') %>
-    <div class="container">
-        <h1>Cities</h1>
-        <section class="city-index">
-            <% cities.forEach(city => { %>
-                <div class='city-display' onclick="location.href = '/cities/<%=city._id%>'">
-                        <figure>
-                            <img class="city-image" src='/uploads/<%= city.img %>' alt='city-id#-<%=city._id%>'>
-                            <figcaption>
-                                <span class='city-description'>    
-                                    <h3><%= city.name %></h3><br>
-                                    <% if (user) { %>
-                                        <form action='/cities/<%= city._id %>?_method=DELETE' method='POST'>
-                                            <input type='submit' value='Remove City'>
-                                        </form>
-                                        <form action='/cities/<%= city._id %>/edit' method='GET'>
-                                            <input type='submit' value='Edit City'>
-                                        </form>
-                                        <% } %>
-                                    </figcaption>
-                        </figure>
-                            </div>
-            <% }) %>
-        </section>
-        <div class="push"></div>
-    </div>
-    <%- include('../partials/footer.ejs') %>
+  <%- include('../partials/nav.ejs') %>
+  <div class="container">
+    <h1>Cities</h1>
+    <section class="city-index">
+      
+      <% cities.forEach(city => { %>
+        <div class='city-display' onclick="location.href = '/cities/<%=city._id%>'">
+          <figure>
+            <img class="city-image" src='/uploads/<%= city.img %>' alt='city-id#-<%=city._id%>'>
+            <figcaption>
+              <span class='city-description'>    
+                <h3><%= city.name %></h3><br>
+                
+                <% if (user) { %>
+                  <form action='/cities/<%= city._id %>?_method=DELETE' method='POST'>
+                    <input type='submit' value='Remove City'>
+                  </form>
+                  <form action='/cities/<%= city._id %>/edit' method='GET'>
+                    <input type='submit' value='Edit City'>
+                  </form>
+                <% } %>
+            </figcaption>
+          </figure>
+        </div>
+      <% }) %>
+    </section>
+    <div class="push"></div>
+  </div>
+  
+  <%- include('../partials/footer.ejs') %>
 </body>
 </html>

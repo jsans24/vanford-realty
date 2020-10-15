@@ -7,5 +7,5 @@ module.exports = {
   register: require('./registerController'),
   login: require('./loginController'),
   logout: require('./logoutController'),
-  blogs: require('./blogsController')
+  blogs: require('./blogsController'),
 };
