@@ -22,7 +22,6 @@ router.get('/', (req, res) => res.redirect('/blogs/1'))
 
 //create route - get
 router.get('/new', (req, res) => {
-  console.log(req.user);
   res.render('blogs/new')
 });
 
@@ -76,7 +75,6 @@ router.get(`/:id`, (req, res) => {
         if(err) return console.log(err);
         
         db.Realtor.findOne({blogs: blog._id}, (err, author) => {
-          console.log(author);
             res.render('blogs/show', {blog, user: req.user, author})
         })
     });
@@ -142,8 +140,6 @@ router.delete('/:id', (req, res) => {
 
         db.Realtor.findById(blogToDelete.author, (err, realtor) => {
           if(err) return console.log(err);
-
-          console.log(realtor);
 
           realtor.blogs.remove(blogToDelete);
           realtor.save((err) => {
