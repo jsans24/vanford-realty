@@ -69,6 +69,7 @@ router.post('/', (req, res) => {
             if(err) return console.log(err);
 
             console.log(newCity);
+            res.redirect('/cities');
         });
     })
 });

@@ -79,6 +79,32 @@ section {
     cursor: pointer;
 }
 
+.house-billboard {
+    margin-top: 5%;
+    width: 500px;
+    height: auto;
+}
+
+.realtor-month {
+    width: 250px;
+    height: 250px;
+    background: #838383;
+    border: 1px solid black;
+    margin: 5%
+}
+
+.featured {
+    display: block;
+    margin: auto;
+    width: 150px;
+    height: 175px;
+    border-radius: 50%;
+}
+
+.white-space {
+    width: 300px;
+}
+
 /* LISTINGS INDEX */
 .new-listing, .new-city {
     margin: 20px 0 20px 0;
@@ -161,19 +187,19 @@ img {
     margin-left: 2%
 }
 
-.realtor-image {
+.realtor-house {
     width: 250px;
-    height: 250px;
-    border-radius: 25%;
+    height: 300px;
+    border-radius: 50%;
 }
 
 .about-house {
-    width: 25%
+    width: 15%
 }
 
 #show-image {
-    width: 300px;
-    height: 200px;
+    width: 600px;
+    height: 400px;
     border: 10px solid #797a7e 
 
 }
@@ -189,15 +215,21 @@ img {
 
 /* REALTOR INDEX */
 .realtor-display {
-    vertical-align: top;
     display: inline-block;
+    padding: 20px 30px;
+    margin-left: 3%;
+    box-sizing: border-box;
+    width: 250px; height: 250px;
     text-align: center;
-    width: 300px;
-    margin: 5%;
     cursor: pointer;
 }
 
-
+.realtor-image {
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%;
+}
 
 /* REALTOR SHOW */
 
@@ -217,12 +249,6 @@ img {
     right: 3.625vw;
 }
 
-
-.realtor-img {
-    width: 100%;
-    height: auto;
-}
-
 .realtor-info {
     width: 30%
 }
@@ -233,6 +259,46 @@ img {
     overflow: scroll;
 }
 
+.realtor-show {
+    width: 250px;
+    height: auto;
+}
+
+/* POPULATION SHOW */
+.city-show {
+    margin-left: 0%;
+}
+
+.city-text {
+    color: white;
+}
+
+.city-listing-box {
+    margin: 2% 9%;
+}
+
+.photo {
+    position: relative;
+    margin: 2%;
+}
+
+.text-overlay {
+    position: absolute;
+    width: 600px;
+    top: 80%;
+    left: 25%;
+    z-index: 1;
+    background: black;
+    opacity: 0.4;
+    color: white;
+}
+
+#city-image {
+    margin: 0 auto;
+    width: 900px;
+    height: 450px;  
+    opacity: 0.8;  
+}
 
 
 
