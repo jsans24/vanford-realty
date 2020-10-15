@@ -107,8 +107,12 @@ router.put('/:realtorId', (req, res) => {
 router.delete('/:realtorId', (req, res) => {
   db.Realtor.findByIdAndDelete(req.params.realtorId, (err, deletedRealtor) => {
     if (err) console.log(err);
+    
+    db.House.deleteMany({realtor: deletedRealtor._id}, (err, deletedHouses) => {
+      if (err) console.log(err);
 
-    res.redirect('/realtors');
+      res.redirect('/realtors');
+    });
   });
 });
 
