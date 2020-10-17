@@ -13,7 +13,7 @@
     <h1><%= realtor.name %></h1>
   <div class="show-page">
     <div class="realtor-info">
-      <h4><%= realtor.name %>'s Bio:</h4>
+      <h4 class="bio"><%= realtor.name %>'s Bio:</h4>
       <p class="realtor-bio"><%= realtor.bio %> </p>
     </div>
     <div class="realtor-img-box">
@@ -30,7 +30,7 @@
             <% } %>
             <li><i class="far fa-envelope"></i> <a href="mailto:<%= realtor.email %>"><%= realtor.email %></a></li>
             <% if (address) { %>
-              <li><a href="http://maps.google.com/maps?q=<%= address[0] %>+<%= address[1] %>+<%= address[2] %>"><%= realtor.address %></a></li>
+              <li><i class="far fa-building"></i> <a href="http://maps.google.com/maps?q=<%= address[0] %>+<%= address[1] %>+<%= address[2] %>"><%= realtor.address %></a></li>
             <% } %> 
           </ul>
         </figcaption>
@@ -39,7 +39,7 @@
     </div>
   
     <div class="listing-box properties-box">
-      <h5 class='col text-center'>NEWEST LISTINGS</h5>
+      <h4 class='col text-center'><strong>NEWEST LISTINGS</strong></h4>
         <% houses.forEach(house => { %>
           <figure class="realtors-listings" onclick="location.href='/houses/<%= house._id %>'">
             <img src="/uploads/<%= house.img %>" alt="house">
