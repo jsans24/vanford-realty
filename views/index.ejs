@@ -6,10 +6,10 @@
 <body>
   <%- include('./partials/nav.ejs') %>
   <div class="container">
-    <div class='background'></div>
+    <div class='index-background'></div>
     <div class='landing-page'>
       <div class='blog'>
-        <h5>VanFord Blog</h5>
+        <h5 class='listing bold-text'>VanFord Blog</h5>
         <% for( let i = blogs.length - 1; i > blogs.length - 3; i--) { %>
           <% if (blogs[i]) { %>
         <h6><%= blogs[i].publishDate.toLocaleString('en-US', 
@@ -22,7 +22,7 @@
         <% } %>
       </div>
       <div class='house-billboard'>
-        <h5 class='listing'>Featured Listing</h5>
+        <h5 class='listing bold-text'>Featured Listing</h5>
         <% if (house) { %>
         <div class='landing-images' onclick="location.href = '/houses/<%=house._id%>'">
           <img class="landing-picture" src='<%=house.img %>' alt='house-id#-<%=house._id%>'>
@@ -40,7 +40,7 @@
         <% } %>
       </div>
       <div class='realtor-month'>
-        <h5 class='listing'>Realtor of the Month</h5>
+        <h5 class='listing bold-text'>Realtor of the Month</h5>
         <% if(realtor) { %>
           <div class='landing-images' onclick="location.href = '/realtors/<%= realtor._id %>'">
             <img class='featured' src='/uploads/<%= realtor.img %>' alt='realtor-id#-<%=realtor._id%>'/>

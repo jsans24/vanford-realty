@@ -6,7 +6,8 @@
 <body>
   <%- include('../partials/nav.ejs') %>
   <div class="container">
-    <h1>Houses for Sale</h1>
+    <div class='houses-background'></div>
+    <h1><strong>HOUSES FOR SALE</strong></h1>
     <% listings.forEach(listing => { %>
     <div class='house-display' onclick="location.href = '/houses/<%=listing._id%>'">
       
