@@ -111,15 +111,6 @@ html, body {
 }
 
 /* LANDING PAGE */
-.landing-page {
-  display: flex;
-  justify-content: space-between;
-}
-
-.landing-picture {
-  width: 500px;
-  height: 300px
-}
 
 .listing {
   text-align: center;
@@ -141,10 +132,6 @@ html, body {
 }
 
 .featured {
-  display: block;
-  margin: auto;
-  width: 150px;
-  height: 200px;
   border-radius: 50%;
 }
 
@@ -271,11 +258,6 @@ img {
 
 /* HOUSES SHOW */
 
-.show-page {
-  display: flex;
-  justify-content: space-between;
-}
-
 .show-realtor {
   margin: 5% 0 0 7%;
 }
@@ -285,21 +267,9 @@ img {
   cursor: pointer
 }
 
-.realtor-house {
-  width: 250px;
-  height: 300px;
-  border-radius: 50%;
-}
-
-.about-house {
-  width: 15%
-}
-
 #show-image {
-  width: 600px;
-  height: 400px;
-  border: 10px solid #797a7e
-
+  border: 10px solid #797a7e;
+  margin-top: 5%
 }
 
 #show-page-intro {

@@ -5,51 +5,64 @@
 </head>
 <body>
   <%- include('../partials/nav.ejs') %>
-  <div id="show-page-intro">
-    <h2> <%=listing.address%> </h2>
-    <h3> <%= city.name %></h3>
-    <% const price = (listing.price) %>
-    <h4 id="house-price"><%= '$' + price.toFixed(0) %></h4>
+  <div container='container-fluid'>
+    <div id="show-page-intro">
+      <h2> <%=listing.address%> </h2>
+      <h3> <%= city.name %></h3>
+      <% const price = (listing.price) %>
+      <h4 id="house-price"><%= '$' + price.toFixed(0) %></h4>
+    </div>
   </div>
   <div class='container'>
-  <% if (realtor.phone) var phoneNumber = realtor.phone.toString().split('') %>
+    <div class='row'>
+      <div class='col-3'>
+        <% if (realtor.phone) var phoneNumber = realtor.phone.toString().split('') %>
 
-  <p class='show-realtor'>MEET THE REALTOR</p>
-
-  <div class='show-page'>
-    <div class='realtor' onclick="location.href = '/realtors/<%=realtor._id%>'">
-      <img class='realtor-house' src='/uploads/<%= realtor.img %>' alt='realtor-id#-<%=realtor._id%>'/>
-      <ul>
-        <ul><%= realtor.name %></ul>
-        <% if (phoneNumber) { %>
+        <p class='show-realtor'>MEET THE REALTOR</p>
+        <div class='realtor' onclick="location.href = '/realtors/<%=realtor._id%>'">
+          <img class='img-fluid featured' src='/uploads/<%= realtor.img %>' alt='realtor-id#-<%=realtor._id%>'/>  
+        </div>
         <ul>
-          (<%= phoneNumber[0]%><%=phoneNumber[1]%><%=phoneNumber[2]%>)
-          <%= phoneNumber[3]%><%= phoneNumber[4]%><%= phoneNumber[5]%> - 
-          <%= phoneNumber[6]%><%= phoneNumber[7]%><%= phoneNumber[8]%><%= phoneNumber[9]%>
-        </ul>
-        <% } %>
-        <ul><a href='/realtors/<%=realtor.id%>'>Realtor's Profile</a></ul>
-      </ul>
-      
-    </div>
-  
-    <div class='show-house'>
-      <img id='show-image' src='/uploads/<%= listing.img %>' alt='house-id#-<%=listing._id%>'>
-      <div>
-        <p class='text-center'>Property Details:</p>
-        <ul class='text-center'>
-          <li>Size: <%=listing.size%> sq.ft.</li>
-          <li>Bedrooms: <%=listing.bedrooms%> </li>
-          <li>Bathrooms: <%=listing.bathrooms%> </li>
-        </ul>
+          <li><%= realtor.name %></li>
+          <% if (phoneNumber) { %>
+          <li>
+            (<%= phoneNumber[0]%><%=phoneNumber[1]%><%=phoneNumber[2]%>)
+            <%= phoneNumber[3]%><%= phoneNumber[4]%><%= phoneNumber[5]%> - 
+            <%= phoneNumber[6]%><%= phoneNumber[7]%><%= phoneNumber[8]%><%= phoneNumber[9]%>
+          </li>
+          <% } %>
+          <li><a href='/realtors/<%=realtor.id%>'>Realtor's Profile</a></li>
+        </ul> 
       </div>
-    </div>
+        
+      <div class='col-9'>
+        <div class='row'>
+          <div class='col'>
+            <img class='img-fluid d-block mx-auto w-100' id='show-image' src='/uploads/<%= listing.img %>' 
+            alt='house-id#-<%=listing._id%>'>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col'>
+            <div>
+              <p class='text-center'>Property Details:</p>
+              <ul class='text-center'>
+                <li>Size: <%=listing.size%> sq.ft.</li>
+                <li>Bedrooms: <%=listing.bedrooms%> </li>
+                <li>Bathrooms: <%=listing.bathrooms%> </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col'>
+            <h5>PROPERTY DESCRIPTION:</h5>
+            <p><%=listing.about%></p>
+          </div>
+        </div>
+      </div>
+    </div> 
 
-    <div class='about-house'>
-      <h5>PROPERTY DESCRIPTION:</h5>
-      <p><%=listing.about%></p>
-    </div>
-  </div>
   <div class="push"></div>
   </div>
   <%- include('../partials/footer.ejs') %>
