@@ -17,7 +17,7 @@
   <p class='show-realtor'>MEET THE REALTOR</p>
 
   <div class='show-page'>
-    <div class='realtor'>
+    <div class='realtor' onclick="location.href = '/realtors/<%=realtor._id%>'">
       <img class='realtor-house' src='/uploads/<%= realtor.img %>' alt='realtor-id#-<%=realtor._id%>'/>
       <ul>
         <ul><%= realtor.name %></ul>

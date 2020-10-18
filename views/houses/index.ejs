@@ -13,7 +13,7 @@
       
       <img src='/uploads/<%= listing.img %>' 
         alt='house-id#-<%=listing._id%>'>
-      <span class='house-description'>    
+      <span class='house-description'><strong>    
         <%= listing.address %>
         <br>
         <% cities.forEach(city => { %>
@@ -23,7 +23,7 @@
         <% }) %>
         <br>
         <% const price = (listing.price) %>
-        <%= '$' + price.toFixed(0) %>
+        <%= '$' + price.toFixed(0) %></strong>
       </span>
       
     </div>

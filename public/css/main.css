@@ -281,7 +281,8 @@ img {
 }
 
 .realtor {
-  margin-left: 2%
+  margin-left: 2%;
+  cursor: pointer
 }
 
 .realtor-house {
@@ -398,6 +399,7 @@ img {
 
 .city-text {
   color: white;
+  font-size: 5rem;
 }
 
 .city-listing-box {
@@ -469,5 +471,17 @@ img {
 }
 
 
+@media only screen and (max-width: 900px) {
+  .city-text {
+    color: white;
+    font-size: 3rem;
+  }
+}
 
+@media only screen and (max-width: 600px) {
+  .city-text {
+    color: white;
+    font-size: 2rem;
+  }
+}
 
