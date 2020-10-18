@@ -321,7 +321,6 @@ img {
 
 /* REALTOR SHOW */
 
-
 .realtors-listings {
   text-align: center;
   width: 18vw;
@@ -337,10 +336,6 @@ img {
   right: 3.625vw;
 }
 
-.realtor-info {
-  width: 15vw;
-}
-
 .bio {
   text-transform: uppercase;
 }
@@ -353,12 +348,6 @@ img {
 
 .properties-box {
   overflow: scroll;
-}
-
-.realtor-show {
-  width: 250px;
-  height: auto;
-  border-radius: 50%;
 }
 
 /* CITY SHOW */ 
