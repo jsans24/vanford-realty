@@ -6,24 +6,23 @@
 <body>
   <%- include('../partials/nav.ejs') %>
   <div class="container">
-    <div class='cities-background'></div>
     <h1><strong>CITIES SERVED</strong></h1>
     <section class="city-index">
       
       <% cities.forEach(city => { %>
         <div class='city-display' onclick="location.href = '/cities/<%=city._id%>'">
           <figure>
-            <img class="city-image" src='/uploads/<%= city.img %>' alt='city-id#-<%=city._id%>'>
+            <img class="img-fluid rounded" src='/uploads/<%= city.img %>' alt='city-id#-<%=city._id%>'>
             <figcaption>
               <span class='city-description'>    
                 <h3><%= city.name %></h3><br>
                 
                 <% if (user) { %>
                   <form action='/cities/<%= city._id %>?_method=DELETE' method='POST'>
-                    <input type='submit' value='Remove City'>
+                    <button id='submit' type='submit' class='btn buttons-custom'>Remove City</button>
                   </form>
                   <form action='/cities/<%= city._id %>/edit' method='GET'>
-                    <input type='submit' value='Edit City'>
+                    <button id='submit' type='submit' class='btn buttons-custom'>Edit City</button>
                   </form>
                 <% } %>
             </figcaption>
