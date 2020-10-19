@@ -7,23 +7,23 @@
 </head>
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">VanFord Realty</a>
+    <nav class="navbar navbar-expand-lg navbar navbar-dark navbar-custom">
+      <a class="navbar-brand" href="/">VanFord Realty</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/">HOME <span class="sr-only">(current)</span></a>
           </li>
           <% if (user) { %>
             <li class="nav-item">
-              <a class="nav-link" href="/listings">Admin</a>
+              <a class="nav-link" href="/listings">ADMIN</a>
             </li>
           <% } else { %>
             <li class="nav-item">
-              <a class="nav-link" href="/register">Realtor Login</a>
+              <a class="nav-link" href="/register">REALTOR LOGIN</a>
             </li>
           <% } %>
         </ul>
@@ -32,7 +32,7 @@
           <input type="number" name="max_price" id="max_price" placeholder="max price">
           <input type="number" name="bedrooms" id="bedrooms" placeholder="bedrooms">
           <input type="number" name="bathrooms" id="bathrooms" placeholder="bathrooms">
-          <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+          <button class="btn btn-outline-secondary my-2 my-sm-0 search" type="submit">Search</button>
         </form>
       </div>
     </nav>
@@ -40,19 +40,19 @@
   <section>
     <ul class="nav justify-content-center">
       <li class="nav-item">
-        <a class="nav-link text-secondary" href="/houses/">Houses</a>
+        <a class="nav-link text-secondary" href="/houses/">HOUSES</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-secondary" href="/realtors">Realtors</a>
+        <a class="nav-link text-secondary" href="/realtors">REALTORS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-secondary" href="/cities">Cities</a>
+        <a class="nav-link text-secondary" href="/cities">CITIES</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-secondary" href="/blogs">Blogs</a>
+        <a class="nav-link text-secondary" href="/blogs">BLOGS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-secondary" href="/contact">Contact Us</a>
+        <a class="nav-link text-secondary" href="/contact">CONTACT US</a>
       </li>
     </ul>
   </section>

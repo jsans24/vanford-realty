@@ -1,3 +1,24 @@
+.container {
+  position: relative;
+  z-index: 1
+}
+
+.container .index-background {
+  background-image: url('/images/Vanford-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.4;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1
+}
+
 h1 {
   text-align: center;
   margin: 25px 0;
@@ -7,8 +28,8 @@ h2, h3, h4 {
   margin-left: 5%;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif;
+h1, h2, h3, h4, h5, h6, .nav-item {
+  font-family: 'Oswald', sans-serif;
 }
 
 ul {
@@ -16,7 +37,7 @@ ul {
 }
 
 p {
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Fauna One', serif;
 }
 
 /* NAVBAR PARTIAL */
@@ -28,12 +49,20 @@ section {
   min-height: 80px;
 }
 
+.logo {
+  width: 50px;
+  height: 50px;
+  opacity: 0.5;
+}
+
+.navbar-custom {
+  background: #070d59
+}
+
 .navbar-brand {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 2rem;
 }
-
-
 
 /* FOOTER PARTIAL */
 html, body {
@@ -50,7 +79,9 @@ html, body {
   height: 250px;
   margin: 0;
   justify-content: space-between;
-  background:  #9cada4;
+  background:  #f6f5f5;
+  position: relative;
+  z-index: 1;
 }
 
 .push {
@@ -64,11 +95,10 @@ html, body {
 
 .social-media {
   padding: 3%;
-  margin: 3%;
 }
 
 .follow-us {
-  margin-right: 1%;
+  margin-left: 15%;
   width: 150px;
 }
 
@@ -76,16 +106,11 @@ html, body {
   font-family: 'Josefin Sans', sans-serif;
 }
 
-/* LANDING PAGE */
-.landing-page {
-  display: flex;
-  justify-content: space-between;
+.nav-footer {
+  margin: 3%;
 }
 
-.landing-picture {
-  width: 500px;
-  height: 300px
-}
+/* LANDING PAGE */
 
 .listing {
   text-align: center;
@@ -103,20 +128,36 @@ html, body {
 .realtor-month {
   width: 250px;
   height: 250px;
-  background: #838383;
-  border: 1px solid black;
+
 }
 
 .featured {
-  display: block;
-  margin: auto;
-  width: 150px;
-  height: 175px;
   border-radius: 50%;
 }
 
 .blog {
   width: 300px;
+}
+
+.bold-text {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.container .index-background {
+  background-image: url('/images/Vanford-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.4;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1
 }
 
 /* LISTINGS INDEX */
@@ -150,6 +191,35 @@ html, body {
 
 #menu-items {
   text-align: center;
+}
+
+.container .houses-background {
+  background-image: url('/images/houses-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.4;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1
+}
+
+.buttons-custom {
+  background: #f6f5f5;
+}
+
+.logout {
+  margin-top: 2%;
+}
+
+a.dark{
+  color: black;
+  text-decoration: none;
 }
 
 /* LOGIN / HOUSING FORMS  */
@@ -188,34 +258,18 @@ img {
 
 /* HOUSES SHOW */
 
-.show-page {
-  display: flex;
-  justify-content: space-between;
-}
-
 .show-realtor {
   margin: 5% 0 0 7%;
 }
 
 .realtor {
-  margin-left: 2%
-}
-
-.realtor-house {
-  width: 250px;
-  height: 300px;
-  border-radius: 50%;
-}
-
-.about-house {
-  width: 15%
+  margin-left: 2%;
+  cursor: pointer
 }
 
 #show-image {
-  width: 600px;
-  height: 400px;
-  border: 10px solid #797a7e
-
+  border: 10px solid #797a7e;
+  margin-top: 5%
 }
 
 #show-page-intro {
@@ -249,8 +303,23 @@ img {
   border-radius: 50%;
 }
 
-/* REALTOR SHOW */
+.container .realtors-background {
+  background-image: url('/images/realtor-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.4;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1
+}
 
+/* REALTOR SHOW */
 
 .realtors-listings {
   text-align: center;
@@ -267,8 +336,8 @@ img {
   right: 3.625vw;
 }
 
-.realtor-info {
-  width: 15vw;
+.bio {
+  text-transform: uppercase;
 }
 
 .realtor-bio {
@@ -281,18 +350,15 @@ img {
   overflow: scroll;
 }
 
-.realtor-show {
-  width: 250px;
-  height: auto;
-}
+/* CITY SHOW */ 
 
-/* CITY SHOW */
 .city-show {
   margin-left: 0%;
 }
 
 .city-text {
   color: white;
+  font-size: 5rem;
 }
 
 .city-listing-box {
@@ -342,14 +408,8 @@ img {
 
 .city-display {
   margin: 0 5vw;
+  cursor: pointer;
 }
-
-.city-image {
-  min-height: fit-content;
-  width: fit-content;
-}
-
-
 
 /* BLOG */
 
@@ -365,10 +425,22 @@ img {
 /* CONTACT */
 
 .contact {
-    margin: 0 0 5% 0
-
+    text-align: center;
+    margin-bottom: 2%;
 }
 
 
+@media only screen and (max-width: 900px) {
+  .city-text {
+    color: white;
+    font-size: 3rem;
+  }
+}
 
+@media only screen and (max-width: 600px) {
+  .city-text {
+    color: white;
+    font-size: 2rem;
+  }
+}
 
