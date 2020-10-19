@@ -12,27 +12,33 @@
         enctype='multipart/form-data' method="POST">
         <div class='form-group col-md-6'>
           <label for='name'>Name:</label>
-          <input type="text" id="name" name="name" value="<%= foundRealtor.name %>">
+          <input type="text" id="name" name="name" class="form-control" 
+          value="<%= foundRealtor.name %>">
         </div>
         <div class='form-group col-md-6'>
           <label for='phone'>Phone Number:</label>
-          <input type="text" id="phone" name="phone" value="<%= foundRealtor.phone %>">
+          <input type="text" id="phone" name="phone" class="form-control"
+          value="<%= foundRealtor.phone %>">
         </div>
         <div class='form-group col-md-6'>
           <label for='e-mail'>E-Mail:</label>
-          <input type="email" id="e-mail" name="email" value="<%= foundRealtor.email %>">
+          <input type="email" id="e-mail" name="email" class="form-control"
+          value="<%= foundRealtor.email %>">
         </div>
         <div class='form-group col-md-6'>
           <label for='address'>Address:</label>
-          <input type="text" id="address" name="address" value="<%= foundRealtor.address %>">
+          <input type="text" id="address" name="address" class="form-control"
+          value="<%= foundRealtor.address %>">
         </div>
         <div class='form-group col-md-6'>
           <label for='bio'>Bio:</label>
-          <input type="textarea" id="bio" name="bio" value="<%= foundRealtor.bio %>">
+          <input type="textarea" id="bio" name="bio" cols="50" rows="10" 
+          class="form-control" value="<%= foundRealtor.bio %>">
         </div>
         <div class='form-group col-md-6'>
           <label for='img'>Image:</label>
-          <input type='file' id='img' name='img' value="<%= foundRealtor.img %> ">
+          <input type='file' id='img' name='img' class="form-control"
+          value="<%= foundRealtor.img %> ">
         </div>
         <div class='col text-center'>
           <button type='submit' class='btn btn-primary'>Edit Record</button>
